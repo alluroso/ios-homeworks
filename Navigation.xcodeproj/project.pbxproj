@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0949A22981183C00F7D987 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0949A12981183C00F7D987 /* ProfileHeaderView.swift */; };
 		BE913146297AE45F005D00E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913145297AE45F005D00E9 /* AppDelegate.swift */; };
 		BE913148297AE45F005D00E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913147297AE45F005D00E9 /* SceneDelegate.swift */; };
 		BE91314A297AE45F005D00E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913149297AE45F005D00E9 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE0949A12981183C00F7D987 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		BE913142297AE45F005D00E9 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE913145297AE45F005D00E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE913147297AE45F005D00E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE0949A02981180F00F7D987 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BE0949A12981183C00F7D987 /* ProfileHeaderView.swift */,
+				BE91315B297AE844005D00E9 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		BE913139297AE45F005D00E9 = {
 			isa = PBXGroup;
 			children = (
@@ -67,11 +78,11 @@
 				BE913145297AE45F005D00E9 /* AppDelegate.swift */,
 				BE913147297AE45F005D00E9 /* SceneDelegate.swift */,
 				BE913159297AE830005D00E9 /* FeedViewController.swift */,
-				BE91315B297AE844005D00E9 /* ProfileViewController.swift */,
 				BE91315D297AE856005D00E9 /* PostViewController.swift */,
 				BE91315F297AE86A005D00E9 /* InfoViewController.swift */,
-				BE913161297AE876005D00E9 /* Post.swift */,
 				BE913149297AE45F005D00E9 /* ViewController.swift */,
+				BE913161297AE876005D00E9 /* Post.swift */,
+				BE0949A02981180F00F7D987 /* Profile */,
 				BE91314E297AE45F005D00E9 /* Assets.xcassets */,
 				BE913150297AE45F005D00E9 /* LaunchScreen.storyboard */,
 				BE913153297AE45F005D00E9 /* Info.plist */,
@@ -153,6 +164,7 @@
 				BE91314A297AE45F005D00E9 /* ViewController.swift in Sources */,
 				BE913146297AE45F005D00E9 /* AppDelegate.swift in Sources */,
 				BE913162297AE876005D00E9 /* Post.swift in Sources */,
+				BE0949A22981183C00F7D987 /* ProfileHeaderView.swift in Sources */,
 				BE913160297AE86A005D00E9 /* InfoViewController.swift in Sources */,
 				BE91315C297AE844005D00E9 /* ProfileViewController.swift in Sources */,
 				BE91315A297AE830005D00E9 /* FeedViewController.swift in Sources */,
