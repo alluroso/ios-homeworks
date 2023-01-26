@@ -9,27 +9,61 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    var post1 = Post(title: "Пост 1")
+    var post = Post(title: "Пост 1")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Главная"
         self.view.backgroundColor = .systemGray6
-        
-        let postButton = UIButton()
-        postButton.frame.size = CGSize(width: 180.0, height: 40.0)
-        postButton.setTitle(post1.title, for: .normal)
-        postButton.setTitleColor(.black, for: .normal)
-        postButton.backgroundColor = .orange
-        postButton.addTarget(self, action: #selector(click), for: .touchUpInside)
-        postButton.center = self.view.center
-        view.addSubview(postButton)
+
+        view.addSubview(buttonVSView)
+        buttonVSView.addArrangedSubview(postButtonFirst)
+        buttonVSView.addArrangedSubview(postButtonSecond)
+        constraints()
+    }
+
+    private let buttonVSView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
+    private lazy var postButtonFirst: UIButton = {
+        let button = UIButton()
+        button.setTitle("Пост 1", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .orange
+        button.addTarget(self, action: #selector(click), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var postButtonSecond: UIButton = {
+        let button = UIButton()
+        button.setTitle("Пост 2", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .orange
+        button.addTarget(self, action: #selector(click), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private func constraints() {
+        NSLayoutConstraint.activate([
+            buttonVSView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            buttonVSView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            buttonVSView.widthAnchor.constraint(equalToConstant: 180),
+            buttonVSView.heightAnchor.constraint(equalToConstant: 80)
+        ])
     }
     
     @objc func click() {
         let postVC = PostViewController()
-        postVC.title = post1.title
+        postVC.title = post.title
         navigationController?.pushViewController(postVC, animated: true)
     }
 }

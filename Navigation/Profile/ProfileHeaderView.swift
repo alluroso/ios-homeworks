@@ -14,18 +14,15 @@ final class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.addSubview(profileImage)
-        self.addSubview(nameLabel)
-        self.addSubview(statusLabel)
-        self.addSubview(statusTextField)
-        self.addSubview(statusButton)
+        setupViews()
+        constraints()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    let profileImage: UIImageView = {
+    private let profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "imageProfile")
         image.contentMode = .scaleAspectFill
@@ -33,26 +30,29 @@ final class ProfileHeaderView: UIView {
         image.layer.borderWidth = 3
         image.layer.borderColor = UIColor.white.cgColor
         image.clipsToBounds = true
+        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
 
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Cillian Murphy"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    let statusLabel: UILabel = {
+    private let statusLabel: UILabel = {
         let label = UILabel()
         label.text = "Actor, musician"
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    let statusTextField: UITextField = {
+    private lazy var statusTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter new status"
         textField.clearButtonMode = .whileEditing
@@ -64,6 +64,7 @@ final class ProfileHeaderView: UIView {
         textField.layer.borderColor = UIColor.black.cgColor
         textField.clipsToBounds = true
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        textField.translatesAutoresizingMaskIntoConstraints = false
 
         let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
         textField.leftViewMode = UITextField.ViewMode.always
@@ -71,7 +72,7 @@ final class ProfileHeaderView: UIView {
         return textField
     }()
 
-    let statusButton: UIButton = {
+    private lazy var statusButton: UIButton = {
         let button = UIButton()
         button.setTitle("Show status", for: .normal)
         button.backgroundColor = .systemBlue
@@ -82,6 +83,7 @@ final class ProfileHeaderView: UIView {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -95,13 +97,48 @@ final class ProfileHeaderView: UIView {
         }
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    private func setupViews() {
+        self.addSubview(profileImage)
+        self.addSubview(nameLabel)
+        self.addSubview(statusLabel)
+        self.addSubview(statusTextField)
+        self.addSubview(statusButton)
+    }
 
-        profileImage.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
-        nameLabel.frame = CGRect(x: profileImage.frame.maxX + 20, y: 27, width: 150, height: 18)
-        statusButton.frame = CGRect(x: 16, y: profileImage.frame.maxY + 40, width: self.frame.width - 32, height: 50)
-        statusLabel.frame = CGRect(x: profileImage.frame.maxX + 20, y: statusTextField.frame.minY - 10 - 14, width: 150, height: 14)
-        statusTextField.frame = CGRect(x: profileImage.frame.maxX + 20, y: statusButton.frame.minY - 16 - 40, width: self.frame.width - profileImage.frame.maxX - 20 - 16, height: 40)
+    private func constraints() {
+        NSLayoutConstraint.activate([
+            profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            profileImage.heightAnchor.constraint(equalToConstant: 100),
+            profileImage.widthAnchor.constraint(equalToConstant: 100)
+        ])
+
+        NSLayoutConstraint.activate([
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
+            nameLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
+            nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            nameLabel.heightAnchor.constraint(equalToConstant: 18)
+        ])
+
+        NSLayoutConstraint.activate([
+            statusLabel.bottomAnchor.constraint(equalTo: statusTextField.topAnchor, constant: -10),
+            statusLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
+            statusLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            statusLabel.heightAnchor.constraint(equalToConstant: 14)
+        ])
+
+        NSLayoutConstraint.activate([
+            statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -10),
+            statusTextField.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
+            statusTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            statusTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+
+        NSLayoutConstraint.activate([
+            statusButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 40),
+            statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            statusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            statusButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 }
