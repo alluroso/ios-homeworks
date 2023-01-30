@@ -11,17 +11,6 @@ class ProfileViewController: UIViewController {
 
     let profileHeaderView = ProfileHeaderView()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .lightGray
-        title = "Профиль"
-
-        view.addSubview(profileHeaderView)
-        view.addSubview(newButton)
-        constraints()
-    }
-
     let newButton: UIButton = {
         let button = UIButton()
         button.setTitle("New button", for: .normal)
@@ -36,15 +25,24 @@ class ProfileViewController: UIViewController {
         return button
     }()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.backgroundColor = .lightGray
+        title = "Профиль"
+
+        view.addSubview(profileHeaderView)
+        view.addSubview(newButton)
+        constraints()
+    }
+
     private func constraints() {
         NSLayoutConstraint.activate([
             profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             profileHeaderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             profileHeaderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
-        ])
-        
-        NSLayoutConstraint.activate([
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+
             newButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             newButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             newButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
