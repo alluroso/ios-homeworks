@@ -15,7 +15,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Главная"
-        self.view.backgroundColor = .systemGray6
+        self.view.backgroundColor = .systemIndigo
 
         view.addSubview(buttonVSView)
         buttonVSView.addArrangedSubview(postButtonFirst)
@@ -36,7 +36,9 @@ class FeedViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Пост 1", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = .systemMint
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 0.5
         button.addTarget(self, action: #selector(click), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -46,7 +48,9 @@ class FeedViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Пост 2", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = .systemPurple
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 0.5
         button.addTarget(self, action: #selector(click), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -56,8 +60,8 @@ class FeedViewController: UIViewController {
         NSLayoutConstraint.activate([
             buttonVSView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             buttonVSView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            buttonVSView.widthAnchor.constraint(equalToConstant: 180),
-            buttonVSView.heightAnchor.constraint(equalToConstant: 80)
+            buttonVSView.widthAnchor.constraint(equalToConstant: 320),
+            buttonVSView.heightAnchor.constraint(equalToConstant: 160)
         ])
     }
     
