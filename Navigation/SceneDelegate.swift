@@ -21,11 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let feedVC = FeedViewController()
         let feedNC = UINavigationController(rootViewController: feedVC)
-        feedNC.tabBarItem = UITabBarItem(title: "Главная", image: UIImage(systemName: "house.fill"), tag: 0)
+        feedNC.tabBarItem = UITabBarItem(title: "Главная",
+                                         image: UIImage(systemName: "house"),
+                                         selectedImage: UIImage(systemName: "house.fill"))
 
         let logInVC = LogInViewController()
         let profileNC = UINavigationController(rootViewController: logInVC)
-        profileNC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 1)
+        profileNC.tabBarItem = UITabBarItem(title: "Профиль",
+                                            image: UIImage(systemName: "person"),
+                                            selectedImage: UIImage(systemName: "person.fill"))
 
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.viewControllers = [feedNC, profileNC]

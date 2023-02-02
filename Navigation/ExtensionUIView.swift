@@ -14,3 +14,7 @@ public extension UIView {
         }
     }
 }
+
+extension UIView {
+    static let identifier = String(describing: UIView.self)
+}

@@ -50,6 +50,7 @@ final class ProfileHeaderView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         textField.clipsToBounds = true
+        textField.delegate = self
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -98,11 +99,7 @@ final class ProfileHeaderView: UIView {
     }
 
     private func setupViews() {
-        self.addSubview(profileImage)
-        self.addSubview(nameLabel)
-        self.addSubview(statusLabel)
-        self.addSubview(statusTextField)
-        self.addSubview(statusButton)
+        self.addSubviews(profileImage, nameLabel, statusLabel, statusTextField, statusButton)
     }
 
     private func constraints() {
@@ -121,7 +118,7 @@ final class ProfileHeaderView: UIView {
             statusLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
             statusLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             statusLabel.heightAnchor.constraint(equalToConstant: 14),
-
+            
             statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -10),
             statusTextField.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
             statusTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
@@ -132,5 +129,12 @@ final class ProfileHeaderView: UIView {
             statusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+}
+
+extension ProfileHeaderView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return true
     }
 }
