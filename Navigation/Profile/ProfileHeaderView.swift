@@ -90,6 +90,7 @@ final class ProfileHeaderView: UIView {
 
     @objc func buttonPressed() {
         statusLabel.text = statusText
+        self.endEditing(true)
     }
 
     @objc func statusTextChanged(_ textField: UITextField) {
