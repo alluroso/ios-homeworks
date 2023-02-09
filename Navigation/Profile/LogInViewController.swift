@@ -9,6 +9,10 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
+    let tabBar = UITabBarItem(title: "Профиль",
+                              image: UIImage(systemName: "person"),
+                              selectedImage: UIImage(systemName: "person.fill"))
+
     private let notificationCenter = NotificationCenter.default
 
     private let scrollView: UIScrollView = {
@@ -92,11 +96,20 @@ class LogInViewController: UIViewController {
         return button
     }()
 
+    init(){
+        super.init(nibName: nil, bundle: nil)
+        tabBarItem = tabBar
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .white
+        navigationController?.navigationBar.isHidden = true
 
         setupViews()
     }
