@@ -21,18 +21,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let feedVC = FeedViewController()
         let feedNC = UINavigationController(rootViewController: feedVC)
-        feedNC.tabBarItem = UITabBarItem(title: "Главная",
-                                         image: UIImage(systemName: "house"),
-                                         selectedImage: UIImage(systemName: "house.fill"))
 
         let logInVC = LogInViewController()
         let profileNC = UINavigationController(rootViewController: logInVC)
-        profileNC.tabBarItem = UITabBarItem(title: "Профиль",
-                                            image: UIImage(systemName: "person"),
-                                            selectedImage: UIImage(systemName: "person.fill"))
 
-        tabBarController.tabBar.backgroundColor = .white
         tabBarController.viewControllers = [feedNC, profileNC]
+
+//        if #available(iOS 15.0, *) {
+//            let appearanceNavigationBar = UINavigationBarAppearance()
+//            let appearanceTabBar = UITabBarAppearance()
+//
+//            appearanceNavigationBar.configureWithOpaqueBackground()
+//            appearanceTabBar.configureWithOpaqueBackground()
+//
+//            appearanceNavigationBar.backgroundColor = .systemBackground
+//            appearanceTabBar.backgroundColor = .systemBackground
+//
+//            feedNC.navigationBar.standardAppearance = appearanceNavigationBar
+//            profileNC.navigationBar.standardAppearance = appearanceNavigationBar
+//            tabBarController.tabBar.standardAppearance = appearanceTabBar
+//
+//            feedNC.navigationBar.scrollEdgeAppearance = feedNC.navigationBar.standardAppearance
+//            profileNC.navigationBar.scrollEdgeAppearance = profileNC.navigationBar.standardAppearance
+//            tabBarController.tabBar.scrollEdgeAppearance = tabBarController.tabBar.standardAppearance
+//        }
 
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

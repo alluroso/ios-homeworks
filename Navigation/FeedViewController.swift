@@ -8,20 +8,12 @@
 import UIKit
 
 class FeedViewController: UIViewController {
+
+    let tabBar = UITabBarItem(title: "Главная",
+                              image: UIImage(systemName: "house"),
+                              selectedImage: UIImage(systemName: "house.fill"))
     
     var post = Post(title: "Пост 1")
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.title = "Главная"
-        self.view.backgroundColor = .systemIndigo
-
-        view.addSubview(buttonVSView)
-        buttonVSView.addArrangedSubview(postButtonFirst)
-        buttonVSView.addArrangedSubview(postButtonSecond)
-        constraints()
-    }
 
     private let buttonVSView: UIStackView = {
         let stackView = UIStackView()
@@ -55,6 +47,26 @@ class FeedViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    init(){
+        super.init(nibName: nil, bundle: nil)
+        title = tabBar.title
+        tabBarItem = tabBar
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.backgroundColor = .systemIndigo
+        view.addSubview(buttonVSView)
+        buttonVSView.addArrangedSubview(postButtonFirst)
+        buttonVSView.addArrangedSubview(postButtonSecond)
+        constraints()
+    }
 
     private func constraints() {
         NSLayoutConstraint.activate([
