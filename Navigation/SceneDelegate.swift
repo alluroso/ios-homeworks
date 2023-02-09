@@ -27,24 +27,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         tabBarController.viewControllers = [feedNC, profileNC]
 
-//        if #available(iOS 15.0, *) {
-//            let appearanceNavigationBar = UINavigationBarAppearance()
-//            let appearanceTabBar = UITabBarAppearance()
-//
-//            appearanceNavigationBar.configureWithOpaqueBackground()
-//            appearanceTabBar.configureWithOpaqueBackground()
-//
-//            appearanceNavigationBar.backgroundColor = .systemBackground
-//            appearanceTabBar.backgroundColor = .systemBackground
-//
-//            feedNC.navigationBar.standardAppearance = appearanceNavigationBar
-//            profileNC.navigationBar.standardAppearance = appearanceNavigationBar
-//            tabBarController.tabBar.standardAppearance = appearanceTabBar
-//
-//            feedNC.navigationBar.scrollEdgeAppearance = feedNC.navigationBar.standardAppearance
-//            profileNC.navigationBar.scrollEdgeAppearance = profileNC.navigationBar.standardAppearance
-//            tabBarController.tabBar.scrollEdgeAppearance = tabBarController.tabBar.standardAppearance
-//        }
+        if #available(iOS 15.0, *) {
+            let appearanceNavigationBar = UINavigationBarAppearance()
+            let appearanceTabBar = UITabBarAppearance()
+
+            appearanceNavigationBar.configureWithOpaqueBackground()
+            appearanceTabBar.configureWithOpaqueBackground()
+
+            appearanceNavigationBar.backgroundColor = .systemBackground
+            appearanceTabBar.backgroundColor = .systemBackground
+
+            feedNC.navigationBar.standardAppearance = appearanceNavigationBar
+            profileNC.navigationBar.standardAppearance = appearanceNavigationBar
+            tabBarController.tabBar.standardAppearance = appearanceTabBar
+
+            feedNC.navigationBar.scrollEdgeAppearance = feedNC.navigationBar.standardAppearance
+            profileNC.navigationBar.scrollEdgeAppearance = profileNC.navigationBar.standardAppearance
+            tabBarController.tabBar.scrollEdgeAppearance = tabBarController.tabBar.standardAppearance
+        }
 
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
