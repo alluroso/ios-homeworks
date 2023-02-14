@@ -9,6 +9,22 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
 
+    private let photos = Photo.arrayPhotos()
+
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.identifier)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        return collectionView
+    }()
+
     private let photosLabel: UILabel = {
         let label = UILabel()
         label.text = "Photos"
@@ -27,46 +43,6 @@ class PhotosTableViewCell: UITableViewCell {
         return image
     }()
 
-    private lazy var photoFirst: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "1")
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-
-    private lazy var photoSecond: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "2")
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-
-    private lazy var photoThird: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "3")
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-
-    private lazy var photoFourth: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "4")
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 6
-        image.clipsToBounds = true
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -79,7 +55,7 @@ class PhotosTableViewCell: UITableViewCell {
     }
 
     private func setupViews() {
-        contentView.addSubviews(photosLabel, arrowGallery, photoFirst, photoSecond, photoThird, photoFourth)
+        contentView.addSubviews(collectionView, photosLabel, arrowGallery)
     }
 
     private func constraints() {
@@ -94,30 +70,42 @@ class PhotosTableViewCell: UITableViewCell {
             arrowGallery.widthAnchor.constraint(equalTo: arrowGallery.heightAnchor),
             arrowGallery.heightAnchor.constraint(equalTo: photosLabel.heightAnchor),
 
-            photoFirst.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: 12),
-            photoFirst.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            photoFirst.trailingAnchor.constraint(equalTo: photoSecond.leadingAnchor, constant: -8),
-            photoFirst.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 48) / 4),
-            photoFirst.heightAnchor.constraint(equalTo: photoFirst.widthAnchor),
-            photoFirst.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-
-            photoSecond.topAnchor.constraint(equalTo: photoFirst.topAnchor),
-            photoSecond.trailingAnchor.constraint(equalTo: photoThird.leadingAnchor, constant: -8),
-            photoSecond.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 48) / 4),
-            photoSecond.heightAnchor.constraint(equalTo: photoSecond.widthAnchor),
-            photoSecond.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            
-            photoThird.topAnchor.constraint(equalTo: photoFirst.topAnchor),
-            photoThird.trailingAnchor.constraint(equalTo: photoFourth.leadingAnchor, constant: -8),
-            photoThird.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 48) / 4),
-            photoThird.heightAnchor.constraint(equalTo: photoThird.widthAnchor),
-            photoThird.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-
-            photoFourth.topAnchor.constraint(equalTo: photoFirst.topAnchor),
-            photoFourth.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            photoFourth.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 48) / 4),
-            photoFourth.heightAnchor.constraint(equalTo: photoFourth.widthAnchor),
-            photoFourth.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
+            collectionView.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: 12),
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            collectionView.heightAnchor.constraint(equalToConstant: 95)
         ])
+    }
+}
+
+extension PhotosTableViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier, for: indexPath) as! PhotosCollectionViewCell
+        cell.setupCell(photo: photos[indexPath.row])
+        return cell
+    }
+}
+
+extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - 24) / 4
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        8
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        8
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
