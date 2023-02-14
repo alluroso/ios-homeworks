@@ -13,11 +13,9 @@ class ProfileViewController: UIViewController {
 
     let posts = Post.arrayPosts()
 
-    private lazy var tableView: UITableView = {
+    static let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         return tableView
@@ -29,16 +27,22 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemGray6
         title = "Профиль"
 
-        view.addSubview(tableView)
+        setupViews()
         constraints()
+    }
+
+    private func setupViews() {
+        view.addSubview(ProfileViewController.tableView)
+        ProfileViewController.tableView.dataSource = self
+        ProfileViewController.tableView.delegate = self
     }
 
     private func constraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            ProfileViewController.tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            ProfileViewController.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            ProfileViewController.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            ProfileViewController.tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 final class ProfileHeaderView: UIView {
 
-    private let profileImage: UIImageView = {
+    private lazy var profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "imageProfile")
         image.contentMode = .scaleAspectFill
@@ -18,7 +18,33 @@ final class ProfileHeaderView: UIView {
         image.layer.borderColor = UIColor.white.cgColor
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openProfileImage))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        image.addGestureRecognizer(tap)
+        image.isUserInteractionEnabled = true
         return image
+    }()
+
+    private lazy var profileImageEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+
+        let profileImageEffectView = UIVisualEffectView(effect: blurEffect)
+        profileImageEffectView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        profileImageEffectView.layer.opacity = 0
+        profileImageEffectView.isUserInteractionEnabled = false
+        return profileImageEffectView
+    }()
+
+    private lazy var closeProfileImageButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25))?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
+        button.backgroundColor = .clear
+        button.layer.opacity = 0
+        button.addTarget(self, action: #selector(closeProfileImage), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     private let nameLabel: UILabel = {
@@ -76,6 +102,7 @@ final class ProfileHeaderView: UIView {
     }()
 
     private var statusText = ""
+    private var profileImageCenter = CGPoint(x: 0, y: 0)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -86,6 +113,53 @@ final class ProfileHeaderView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc func openProfileImage() {
+        UIImageView.animate(withDuration: 0.5,
+                            animations: { [self] in
+            profileImageCenter = profileImage.center
+            profileImage.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY - profileImageCenter.y)
+            profileImage.transform = CGAffineTransform(scaleX: bounds.width / profileImage.frame.width, y: bounds.width / profileImage.frame.width)
+            profileImage.layer.cornerRadius = 0
+            profileImage.layer.borderWidth = 0
+            profileImageEffectView.layer.opacity = 1
+
+            profileImage.isUserInteractionEnabled = false
+            statusTextField.isUserInteractionEnabled = false
+            statusButton.isUserInteractionEnabled = false
+            ProfileViewController.tableView.cellForRow(at: IndexPath(item: 0, section: 0))?.isUserInteractionEnabled = false
+            ProfileViewController.tableView.cellForRow(at: IndexPath(item: 0, section: 1))?.isUserInteractionEnabled = false
+            ProfileViewController.tableView.isScrollEnabled = false
+        },
+                            completion: { _ in
+            UIImageView.animate(withDuration: 0.3) { [self] in
+                closeProfileImageButton.layer.opacity = 1
+            }
+        })
+    }
+
+    @objc func closeProfileImage() {
+        UIImageView.animate(withDuration: 0.3,
+                            animations: { [self] in
+            closeProfileImageButton.layer.opacity = 0
+        },
+                            completion: { _ in
+            UIImageView.animate(withDuration: 0.5) { [self] in
+                profileImage.center = profileImageCenter
+                profileImage.transform = CGAffineTransform(scaleX: 1, y: 1)
+                profileImage.layer.cornerRadius = profileImage.frame.height / 2
+                profileImage.layer.borderWidth = 3
+                profileImageEffectView.layer.opacity = 0
+
+                profileImage.isUserInteractionEnabled = true
+                statusTextField.isUserInteractionEnabled = true
+                statusButton.isUserInteractionEnabled = true
+                ProfileViewController.tableView.cellForRow(at: IndexPath(item: 0, section: 0))?.isUserInteractionEnabled = true
+                ProfileViewController.tableView.cellForRow(at: IndexPath(item: 0, section: 1))?.isUserInteractionEnabled = true
+                ProfileViewController.tableView.isScrollEnabled = true
+            }
+        })
     }
 
     @objc func buttonPressed() {
@@ -100,36 +174,39 @@ final class ProfileHeaderView: UIView {
     }
 
     private func setupViews() {
-        self.addSubviews(profileImage, nameLabel, statusLabel, statusTextField, statusButton)
+        [nameLabel, statusLabel, statusButton, statusTextField, profileImageEffectView, profileImage, closeProfileImageButton].forEach { addSubview($0) }
     }
 
     private func constraints() {
         NSLayoutConstraint.activate([
-            profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            profileImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            profileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             profileImage.heightAnchor.constraint(equalToConstant: 100),
             profileImage.widthAnchor.constraint(equalToConstant: 100),
 
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
-            nameLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 132),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             nameLabel.heightAnchor.constraint(equalToConstant: 18),
 
-            statusLabel.bottomAnchor.constraint(equalTo: statusTextField.topAnchor, constant: -10),
-            statusLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
-            statusLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 35),
+            statusLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusLabel.heightAnchor.constraint(equalToConstant: 14),
             
-            statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -10),
-            statusTextField.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
-            statusTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
+            statusTextField.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
 
-            statusButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 40),
-            statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            statusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            statusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 10),
+            statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint(equalToConstant: 50),
-            statusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            statusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+
+            closeProfileImageButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            closeProfileImageButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
     }
 }
