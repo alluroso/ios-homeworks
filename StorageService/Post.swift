@@ -7,20 +7,20 @@
 
 import Foundation
 
-class Post {
-    let title: String
-    let author: String
-    let description: String
-    let image: String
-    var likes: Int
-    var views: Int
+public struct Post {
+    public let title: String
+    public let author: String
+    public let description: String
+    public let image: String
+    public var likes: Int
+    public var views: Int
     
-    init (title: String = "",
-          author: String = "",
-          image: String = "",
-          description: String = "",
-          likes: Int = 0,
-          views: Int = 0) {
+    public init (title: String = "",
+                 author: String = "",
+                 image: String = "",
+                 description: String = "",
+                 likes: Int = 0,
+                 views: Int = 0) {
         self.title = title
         self.author = author
         self.image = image
@@ -29,7 +29,7 @@ class Post {
         self.views = views
     }
 
-    static func arrayPosts() -> [Post] {
+    public static func arrayPosts() -> [Post] {
         var posts = [Post]()
         posts.append(Post(
             author: "Marilynn",
