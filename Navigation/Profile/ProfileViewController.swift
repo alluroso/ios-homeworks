@@ -66,7 +66,7 @@ extension ProfileViewController: UITableViewDataSource {
         }
 
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-        cell.setupSell(post: posts[indexPath.row])
+        cell.setupCell(post: posts[indexPath.row])
         return cell
     }
 

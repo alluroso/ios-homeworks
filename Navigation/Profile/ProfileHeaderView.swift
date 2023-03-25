@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class ProfileHeaderView: UIView {
 
@@ -178,36 +179,45 @@ final class ProfileHeaderView: UIView {
     }
 
     private func constraints() {
-        NSLayoutConstraint.activate([
-            profileImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            profileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            profileImage.heightAnchor.constraint(equalToConstant: 100),
-            profileImage.widthAnchor.constraint(equalToConstant: 100),
+        profileImage.snp.makeConstraints { maker in
+            maker.top.equalTo(16)
+            maker.leading.equalTo(16)
+            maker.height.width.equalTo(100)
+        }
 
-            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 132),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            nameLabel.heightAnchor.constraint(equalToConstant: 18),
+        nameLabel.snp.makeConstraints { maker in
+            maker.top.equalTo(27)
+            maker.leading.equalTo(132)
+            maker.trailing.equalTo(-16)
+            maker.height.equalTo(18)
+        }
 
-            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 35),
-            statusLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            statusLabel.heightAnchor.constraint(equalToConstant: 14),
-            
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
-            statusTextField.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+        statusLabel.snp.makeConstraints { maker in
+            maker.top.equalTo(nameLabel.snp.bottom).offset(35)
+            maker.leading.equalTo(nameLabel.snp.leading)
+            maker.trailing.equalTo(-16)
+            maker.height.equalTo(14)
+        }
 
-            statusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 10),
-            statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            statusButton.heightAnchor.constraint(equalToConstant: 50),
-            statusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+        statusTextField.snp.makeConstraints { maker in
+            maker.top.equalTo(statusLabel.snp.bottom).offset(10)
+            maker.leading.equalTo(nameLabel.snp.leading)
+            maker.trailing.equalTo(-16)
+            maker.height.equalTo(40)
+        }
 
-            closeProfileImageButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            closeProfileImageButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
-        ])
+        statusButton.snp.makeConstraints { maker in
+            maker.top.equalTo(statusTextField.snp.bottom).offset(10)
+            maker.leading.equalTo(16)
+            maker.trailing.equalTo(-16)
+            maker.height.equalTo(50)
+            maker.bottom.equalTo(-16)
+        }
+
+        closeProfileImageButton.snp.makeConstraints { maker in
+            maker.top.equalTo(16)
+            maker.trailing.equalTo(-16)
+        }
     }
 }
 

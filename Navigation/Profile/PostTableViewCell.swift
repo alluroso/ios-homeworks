@@ -7,8 +7,11 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
+
+    private let imageProcessor = ImageProcessor()
 
     private let contentCellView: UIView = {
         let view = UIView()
@@ -71,13 +74,19 @@ class PostTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupSell(post: Post) {
+    func setupCell(post: Post) {
         postAuthorLabel.text = post.author
-        postImage.backgroundColor = .black
-        postImage.image = UIImage(named: post.image)
         postDescriptionLabel.text = post.description
         postLikesLabel.text = "Likes: \(post.likes)"
         postViewsLabel.text = "Views: \(post.views)"
+        postImage.backgroundColor = .black
+        if let image = UIImage(named: post.image) {
+            let filter = ColorFilter.allCases[Int.random(in: 0..<ColorFilter.allCases.count)]
+            ImageProcessor().processImage(sourceImage: image,
+                                          filter: filter,
+                                          completion: { postImage.image = $0 }
+            )
+        }
     }
 
     private func setupViews() {
