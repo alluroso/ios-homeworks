@@ -58,6 +58,7 @@ class LogInViewController: UIViewController {
         textField.layer.borderWidth = 0.25
         textField.leftViewMode = .always
         textField.returnKeyType = .done
+        textField.clearButtonMode = .whileEditing
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -76,6 +77,8 @@ class LogInViewController: UIViewController {
         textField.layer.borderWidth = 0.25
         textField.leftViewMode = .always
         textField.returnKeyType = .done
+        textField.clearButtonMode = .whileEditing
+        textField.isSecureTextEntry = true
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -188,8 +191,31 @@ extension LogInViewController {
     }
 
     @objc func buttonPressed() {
-        let profileVC = ProfileViewController()
-        navigationController?.pushViewController(profileVC, animated: true)
+        #if DEBUG
+        let currentUserService = TestUserService()
+        let profileVC = ProfileViewController(userService: currentUserService, login: loginTextField.text!)
+        profileVC.userService = currentUserService
+        if loginTextField.text == currentUserService.user.login {
+            navigationController?.pushViewController(profileVC, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Login failed", message: "DEBUG mode", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            alert.view.tintColor = .black
+            self.present(alert, animated: true, completion: nil)
+        }
+        #else
+        let currentUserService = CurrentUserService()
+        let profileVC = ProfileViewController(userService: currentUserService, login: loginTextField.text!)
+        profileVC.userService = currentUserService
+        if loginTextField.text == currentUserService.user.login {
+            navigationController?.pushViewController(profileVC, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Login failed", message: "RELEASE mode", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            alert.view.tintColor = .black
+            self.present(alert, animated: true, completion: nil)
+        }
+        #endif
     }
 }
 

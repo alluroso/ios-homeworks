@@ -14,6 +14,10 @@ class ProfileViewController: UIViewController {
 
     let posts = Post.arrayPosts()
 
+    var userService: UserService
+
+    var login: String?
+
     static let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,13 +26,20 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
 
+    init(userService: UserService, login: String) {
+        self.userService = userService
+        self.login = login
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        #if DEBUG
-            view.backgroundColor = .systemGray6
-        #else
-            view.backgroundColor = .systemBlue
-        #endif
+
+        view.backgroundColor = .systemGray6
         title = "Профиль"
 
         setupViews()
@@ -78,8 +89,15 @@ extension ProfileViewController: UITableViewDataSource {
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = ProfileHeaderView()
-        if section == 0  { return header }
-        else { return nil }
+        if section == 0 {
+            let currentUser = userService.getUser(login: login!)
+            header.nameLabel.text = currentUser?.fullName
+            header.profileImage.image = currentUser?.avatar
+            header.statusLabel.text = currentUser?.status
+            return header
+        } else {
+            return nil
+        }
     }
 
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
