@@ -30,6 +30,10 @@
 		BE91315E297AE856005D00E9 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91315D297AE856005D00E9 /* PostViewController.swift */; };
 		BE913160297AE86A005D00E9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91315F297AE86A005D00E9 /* InfoViewController.swift */; };
 		BE9ED49529CB171100E88E96 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BE9ED49429CB171100E88E96 /* iOSIntPackage */; };
+		BEC4936A29CFC6E60021458D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4936929CFC6E60021458D /* User.swift */; };
+		BEC4936C29D02A5B0021458D /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4936B29D02A5B0021458D /* TestUserService.swift */; };
+		BEC4936F29D02AAE0021458D /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4936E29D02AAE0021458D /* UserServiceProtocol.swift */; };
+		BEC4937129D02ACB0021458D /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4937029D02ACB0021458D /* CurrentUserService.swift */; };
 		E18EF87BD89A236D84AFE930 /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AFCD307238447A913DB125F /* Pods_StorageService.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +88,10 @@
 		BE91315D297AE856005D00E9 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		BE91315F297AE86A005D00E9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		BE913161297AE876005D00E9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BEC4936929CFC6E60021458D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BEC4936B29D02A5B0021458D /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
+		BEC4936E29D02AAE0021458D /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		BEC4937029D02ACB0021458D /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 		C0FC3FAE7C9FAE360C221B77 /* Pods-StorageService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.release.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.release.xcconfig"; sourceTree = "<group>"; };
 		EF1310A03AE9DC16AC4F837A /* Pods_Navigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -161,6 +169,7 @@
 				BE913145297AE45F005D00E9 /* AppDelegate.swift */,
 				BE913147297AE45F005D00E9 /* SceneDelegate.swift */,
 				BE0949A02981180F00F7D987 /* Profile */,
+				BEC4936D29D02A670021458D /* User */,
 				BE913159297AE830005D00E9 /* FeedViewController.swift */,
 				BE91315D297AE856005D00E9 /* PostViewController.swift */,
 				BE91315F297AE86A005D00E9 /* InfoViewController.swift */,
@@ -170,6 +179,17 @@
 				BE59C0342988140500AF94B6 /* ExtensionUIView.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BEC4936D29D02A670021458D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				BEC4936929CFC6E60021458D /* User.swift */,
+				BEC4936B29D02A5B0021458D /* TestUserService.swift */,
+				BEC4937029D02ACB0021458D /* CurrentUserService.swift */,
+				BEC4936E29D02AAE0021458D /* UserServiceProtocol.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		D9005F84840B768D2A84B5EC /* Frameworks */ = {
@@ -386,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC4936C29D02A5B0021458D /* TestUserService.swift in Sources */,
 				BE1A63B72990857100511424 /* PhotosTableViewCell.swift in Sources */,
 				BE91315E297AE856005D00E9 /* PostViewController.swift in Sources */,
 				BE59C0352988140500AF94B6 /* ExtensionUIView.swift in Sources */,
@@ -393,10 +414,13 @@
 				BE0949A22981183C00F7D987 /* ProfileHeaderView.swift in Sources */,
 				BE1A63B92990A84500511424 /* Photo.swift in Sources */,
 				BE913160297AE86A005D00E9 /* InfoViewController.swift in Sources */,
+				BEC4936A29CFC6E60021458D /* User.swift in Sources */,
 				BE91315C297AE844005D00E9 /* ProfileViewController.swift in Sources */,
+				BEC4937129D02ACB0021458D /* CurrentUserService.swift in Sources */,
 				BE91315A297AE830005D00E9 /* FeedViewController.swift in Sources */,
 				BE59C0332987920300AF94B6 /* LogInViewController.swift in Sources */,
 				BE1A63BD29911F0E00511424 /* PhotosCollectionViewCell.swift in Sources */,
+				BEC4936F29D02AAE0021458D /* UserServiceProtocol.swift in Sources */,
 				BE1A63BB2990AC6C00511424 /* PhotosViewController.swift in Sources */,
 				BE913148297AE45F005D00E9 /* SceneDelegate.swift in Sources */,
 				BE892D4E2988FD35007BB937 /* PostTableViewCell.swift in Sources */,

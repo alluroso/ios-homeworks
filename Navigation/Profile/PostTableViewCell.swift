@@ -11,8 +11,6 @@ import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
 
-    private let imageProcessor = ImageProcessor()
-
     private let contentCellView: UIView = {
         let view = UIView()
         view.backgroundColor = .white

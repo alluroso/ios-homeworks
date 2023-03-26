@@ -10,9 +10,9 @@ import SnapKit
 
 final class ProfileHeaderView: UIView {
 
-    private lazy var profileImage: UIImageView = {
+    private(set) lazy var profileImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "imageProfile")
+        //        image.image = UIImage(named: "imageProfile")
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 100 / 2
         image.layer.borderWidth = 3
@@ -48,18 +48,18 @@ final class ProfileHeaderView: UIView {
         return button
     }()
 
-    private let nameLabel: UILabel = {
+    private(set) lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Cillian Murphy"
+        //        label.text = "Cillian Murphy"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private let statusLabel: UILabel = {
+    private(set) lazy var statusLabel: UILabel = {
         let label = UILabel()
-        label.text = "Actor, musician"
+        //        label.text = "Actor, musician"
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
