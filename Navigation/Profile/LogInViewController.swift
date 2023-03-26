@@ -191,31 +191,22 @@ extension LogInViewController {
     }
 
     @objc func buttonPressed() {
-        #if DEBUG
+#if DEBUG
         let currentUserService = TestUserService()
-        let profileVC = ProfileViewController(userService: currentUserService, login: loginTextField.text!)
-        profileVC.userService = currentUserService
-        if loginTextField.text == currentUserService.user.login {
-            navigationController?.pushViewController(profileVC, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Login failed", message: "DEBUG mode", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            alert.view.tintColor = .black
-            self.present(alert, animated: true, completion: nil)
-        }
-        #else
+#else
         let currentUserService = CurrentUserService()
+#endif
+
         let profileVC = ProfileViewController(userService: currentUserService, login: loginTextField.text!)
         profileVC.userService = currentUserService
         if loginTextField.text == currentUserService.user.login {
             navigationController?.pushViewController(profileVC, animated: true)
         } else {
-            let alert = UIAlertController(title: "Login failed", message: "RELEASE mode", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка авторизации", message: "Пожалуйста, попробуйте ещё раз!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             alert.view.tintColor = .black
             self.present(alert, animated: true, completion: nil)
         }
-        #endif
     }
 }
 

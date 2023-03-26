@@ -125,12 +125,19 @@
 				BE91315B297AE844005D00E9 /* ProfileViewController.swift */,
 				BE59C0322987920300AF94B6 /* LogInViewController.swift */,
 				BE892D4D2988FD35007BB937 /* PostTableViewCell.swift */,
-				BE1A63B62990857100511424 /* PhotosTableViewCell.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BE1D504529D0D6FB00487728 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
 				BE1A63B82990A84500511424 /* Photo.swift */,
+				BE1A63B62990857100511424 /* PhotosTableViewCell.swift */,
 				BE1A63BA2990AC6C00511424 /* PhotosViewController.swift */,
 				BE1A63BC29911F0E00511424 /* PhotosCollectionViewCell.swift */,
 			);
-			path = Profile;
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		BE37E0C229C52CD200B9F43F /* StorageService */ = {
@@ -169,6 +176,7 @@
 				BE913145297AE45F005D00E9 /* AppDelegate.swift */,
 				BE913147297AE45F005D00E9 /* SceneDelegate.swift */,
 				BE0949A02981180F00F7D987 /* Profile */,
+				BE1D504529D0D6FB00487728 /* Photo */,
 				BEC4936D29D02A670021458D /* User */,
 				BE913159297AE830005D00E9 /* FeedViewController.swift */,
 				BE91315D297AE856005D00E9 /* PostViewController.swift */,
