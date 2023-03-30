@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let feedNC = UINavigationController(rootViewController: feedVC)
 
         let logInVC = LogInViewController()
+        logInVC.delegate = MyLoginFactory().makeLoginInspector()
         let profileNC = UINavigationController(rootViewController: logInVC)
 
         tabBarController.viewControllers = [feedNC, profileNC]
