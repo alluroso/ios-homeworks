@@ -13,6 +13,8 @@ class LogInViewController: UIViewController {
                               image: UIImage(systemName: "person"),
                               selectedImage: UIImage(systemName: "person.fill"))
 
+    var delegate: LoginViewControllerDelegate?
+
     private let notificationCenter = NotificationCenter.default
 
     private let scrollView: UIScrollView = {
@@ -196,14 +198,34 @@ extension LogInViewController {
 #else
         let currentUserService = CurrentUserService()
 #endif
+        guard loginTextField.text?.isEmpty == false else {
+            let alert = UIAlertController(title: "Ошибка", message: "Введите логин!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
+            alert.addAction(action)
+            alert.view.tintColor = .black
+            self.present(alert, animated: true, completion: nil)
+            return }
 
-        let profileVC = ProfileViewController(userService: currentUserService, login: loginTextField.text!)
-        profileVC.userService = currentUserService
-        if loginTextField.text == currentUserService.user.login {
+        guard passwordTextField.text?.isEmpty == false else {
+            let alert = UIAlertController(title: "Ошибка", message: "Введите пароль!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
+            alert.addAction(action)
+            alert.view.tintColor = .black
+            self.present(alert, animated: true, completion: nil)
+            return }
+
+        guard let login = loginTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let delegate = delegate else { return }
+
+        let result = delegate.check(login: login, password: password)
+        if result {
+            let profileVC = ProfileViewController(userService: currentUserService, login: loginTextField.text!)
             navigationController?.pushViewController(profileVC, animated: true)
         } else {
-            let alert = UIAlertController(title: "Ошибка авторизации", message: "Пожалуйста, попробуйте ещё раз!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            let alert = UIAlertController(title: "Ошибка", message: "Пользователь не существует!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
+            alert.addAction(action)
             alert.view.tintColor = .black
             self.present(alert, animated: true, completion: nil)
         }
