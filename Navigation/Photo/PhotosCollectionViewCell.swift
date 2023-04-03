@@ -9,7 +9,7 @@ import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
 
-    private let photoImageView: UIImageView = {
+    let photoImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 6
@@ -29,9 +29,9 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupCell(photo: Photo) {
-        photoImageView.image = UIImage(named: photo.imageName)!
-    }
+//    func setupCell(photo: Photo) {
+//        photoImageView.image = UIImage(named: photo.imageName)!
+//    }
     
     private func constraints() {
         NSLayoutConstraint.activate([
