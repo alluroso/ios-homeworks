@@ -49,6 +49,12 @@ class LogInViewController: UIViewController {
 
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
+        // Установил текст в поле логина по дефолту для упрощенного входа в разных схемах
+#if DEBUG
+        textField.text = "test"
+#else
+        textField.text = "alluroso"
+#endif
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textColor = .black
         textField.backgroundColor = .systemGray6
@@ -68,6 +74,12 @@ class LogInViewController: UIViewController {
 
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
+        // Установил текст в поле пароля по дефолту для упрощенного входа в разных схемах
+#if DEBUG
+        textField.text = "test"
+#else
+        textField.text = "1234"
+#endif
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textColor = .black
         textField.backgroundColor = .systemGray6
