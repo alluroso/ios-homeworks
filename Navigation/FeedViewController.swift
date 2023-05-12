@@ -35,28 +35,28 @@ class FeedViewController: UIViewController {
     }()
 
     private lazy var postButtonFirst: CustomButton = {
-        let button = CustomButton(title: "Пост 1", titleColor: .black, backgroundColor: .systemMint)
+        let button = CustomButton(title: "Пост 1", titleColor: .black, backgroundColor: .systemMint, onTap: click)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 0.5
-        button.addTarget(self, action: #selector(click), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(click), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     private lazy var postButtonSecond: CustomButton = {
-        let button = CustomButton(title: "Пост 2", titleColor: .black, backgroundColor: .systemPurple)
+        let button = CustomButton(title: "Пост 2", titleColor: .black, backgroundColor: .systemPurple, onTap: click)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 0.5
-        button.addTarget(self, action: #selector(click), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(click), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     private lazy var checkGuessButton: CustomButton = {
-        let button = CustomButton(title: "Check word", titleColor: .black, backgroundColor: .orange)
+        let button = CustomButton(title: "Check word", titleColor: .black, backgroundColor: .orange, onTap: buttonCheckWord)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 0.5
-        button.addTarget(self, action: #selector(buttonCheckWord), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(buttonCheckWord), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -138,7 +138,7 @@ class FeedViewController: UIViewController {
         ])
     }
     
-    @objc func click() {
+    @objc func click(sender: UIButton!) {
         let postVC = PostViewController()
         postVC.title = post.title
         navigationController?.pushViewController(postVC, animated: true)
