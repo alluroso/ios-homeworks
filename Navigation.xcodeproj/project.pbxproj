@@ -21,7 +21,7 @@
 		BE8EE8E52A147F1A00EC7DA6 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = BE8EE8E22A147F1A00EC7DA6 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE8EE8E82A147F1A00EC7DA6 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8EE8E02A147F1A00EC7DA6 /* StorageService.framework */; };
 		BE8EE8E92A147F1A00EC7DA6 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE8EE8E02A147F1A00EC7DA6 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE8EE8ED2A147F2000EC7DA6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913161297AE876005D00E9 /* Post.swift */; };
+		BE8EE8EF2A14809100EC7DA6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913161297AE876005D00E9 /* Post.swift */; };
 		BE913146297AE45F005D00E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913145297AE45F005D00E9 /* AppDelegate.swift */; };
 		BE913148297AE45F005D00E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913147297AE45F005D00E9 /* SceneDelegate.swift */; };
 		BE91314F297AE45F005D00E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE91314E297AE45F005D00E9 /* Assets.xcassets */; };
@@ -152,6 +152,7 @@
 		BE8EE8E12A147F1A00EC7DA6 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
+				BE913161297AE876005D00E9 /* Post.swift */,
 				BE8EE8E22A147F1A00EC7DA6 /* StorageService.h */,
 				BE8EE8E32A147F1A00EC7DA6 /* StorageService.docc */,
 			);
@@ -196,7 +197,6 @@
 				BE913150297AE45F005D00E9 /* LaunchScreen.storyboard */,
 				BE913153297AE45F005D00E9 /* Info.plist */,
 				BE59C0342988140500AF94B6 /* ExtensionUIView.swift */,
-				BE913161297AE876005D00E9 /* Post.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -407,7 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE8EE8E42A147F1A00EC7DA6 /* StorageService.docc in Sources */,
-				BE8EE8ED2A147F2000EC7DA6 /* Post.swift in Sources */,
+				BE8EE8EF2A14809100EC7DA6 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
