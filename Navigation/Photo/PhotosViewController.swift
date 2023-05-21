@@ -10,9 +10,8 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController {
 
-//    private let photos = Photo.arrayPhotos()
-    private var photos: [UIImage] = []
-    private var imagePublisherFacade: ImagePublisherFacade?
+    private var sourceArray = Photo.arrayImages()
+    private var filterArray = [CGImage?]()
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,20 +30,40 @@ class PhotosViewController: UIViewController {
         title = "Photo Gallery"
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
-        imagePublisherFacade = ImagePublisherFacade()
-        imagePublisherFacade?.addImagesWithTimer(time: 0.5, repeat: 20, userImages: Photo.arrayPhotos())
+        benchmarkQOS()
         constraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
-        imagePublisherFacade?.subscribe(self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
-        imagePublisherFacade?.removeSubscription(for: self)
-        imagePublisherFacade?.rechargeImageLibrary()
+    }
+
+    private func benchmarkQOS() {
+        let startTime = Date()
+        print("Начало обработки")
+
+        ImageProcessor().processImagesOnThread(sourceImages: Photo.arrayImages(), filter: .bloom(intensity: 5.0), qos: .background) {
+            self.filterArray = $0
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+
+            let endTime = Date()
+            let timeElapsed = endTime.timeIntervalSince(startTime)
+            print("Конец обработки. Время: \(timeElapsed) секунды")
+        }
+        /*
+         Время обработки изображений с различными фильтрами QOS
+         background - 5.2 секунд
+         default - 1.2 секунды
+         userInitiated - 1.3 секунды
+         userInteractive - 1.3 секунды
+         utility - 1.4 секунды
+         */
     }
 
     private func constraints() {
@@ -59,13 +78,18 @@ class PhotosViewController: UIViewController {
 
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photos.count
+        filterArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier, for: indexPath) as! PhotosCollectionViewCell
-//        cell.setupCell(photo: images[indexPath.row])
-        cell.photoImageView.image = photos[indexPath.row]
+        var image = UIImage()
+        if let cgImage =  filterArray[indexPath.row] {
+            image = UIImage(cgImage: cgImage)
+        } else {
+            image = UIImage(systemName: "photo.fill")!
+        }
+        cell.setupCell(photo: image)
         return cell
     }
 }
@@ -86,12 +110,5 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-    }
-}
-
-extension PhotosViewController: ImageLibrarySubscriber {
-    func receive(images: [UIImage]) {
-        photos = images
-        collectionView.reloadData()
     }
 }

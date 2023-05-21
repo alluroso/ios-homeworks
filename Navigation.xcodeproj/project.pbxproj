@@ -13,7 +13,6 @@
 		BE1A63B92990A84500511424 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A63B82990A84500511424 /* Photo.swift */; };
 		BE1A63BB2990AC6C00511424 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A63BA2990AC6C00511424 /* PhotosViewController.swift */; };
 		BE1A63BD29911F0E00511424 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A63BC29911F0E00511424 /* PhotosCollectionViewCell.swift */; };
-		BE4FC1D229D9A6A9000AED9E /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BE4FC1D129D9A6A9000AED9E /* iOSIntPackage */; };
 		BE59C0332987920300AF94B6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59C0322987920300AF94B6 /* LogInViewController.swift */; };
 		BE59C0352988140500AF94B6 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59C0342988140500AF94B6 /* ExtensionUIView.swift */; };
 		BE892D4E2988FD35007BB937 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE892D4D2988FD35007BB937 /* PostTableViewCell.swift */; };
@@ -22,6 +21,7 @@
 		BE8EE8E82A147F1A00EC7DA6 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8EE8E02A147F1A00EC7DA6 /* StorageService.framework */; };
 		BE8EE8E92A147F1A00EC7DA6 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE8EE8E02A147F1A00EC7DA6 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE8EE8EF2A14809100EC7DA6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913161297AE876005D00E9 /* Post.swift */; };
+		BE8EE9002A159BAA00EC7DA6 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BE8EE8FF2A159BAA00EC7DA6 /* iOSIntPackage */; };
 		BE913146297AE45F005D00E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913145297AE45F005D00E9 /* AppDelegate.swift */; };
 		BE913148297AE45F005D00E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE913147297AE45F005D00E9 /* SceneDelegate.swift */; };
 		BE91314F297AE45F005D00E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE91314E297AE45F005D00E9 /* Assets.xcassets */; };
@@ -119,8 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE8EE9002A159BAA00EC7DA6 /* iOSIntPackage in Frameworks */,
 				BE8EE8E82A147F1A00EC7DA6 /* StorageService.framework in Frameworks */,
-				BE4FC1D229D9A6A9000AED9E /* iOSIntPackage in Frameworks */,
 				84E4110B0B75F0D747EDDE20 /* Pods_Navigation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +294,7 @@
 			);
 			name = Navigation;
 			packageProductDependencies = (
-				BE4FC1D129D9A6A9000AED9E /* iOSIntPackage */,
+				BE8EE8FF2A159BAA00EC7DA6 /* iOSIntPackage */,
 			);
 			productName = Navigation;
 			productReference = BE913142297AE45F005D00E9 /* Navigation.app */;
@@ -328,7 +328,7 @@
 			);
 			mainGroup = BE913139297AE45F005D00E9;
 			packageReferences = (
-				BE4FC1D029D9A6A9000AED9E /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				BE8EE8FE2A159BAA00EC7DA6 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 			);
 			productRefGroup = BE913143297AE45F005D00E9 /* Products */;
 			projectDirPath = "";
@@ -733,7 +733,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BE4FC1D029D9A6A9000AED9E /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
+		BE8EE8FE2A159BAA00EC7DA6 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage.git";
 			requirement = {
@@ -744,9 +744,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BE4FC1D129D9A6A9000AED9E /* iOSIntPackage */ = {
+		BE8EE8FF2A159BAA00EC7DA6 /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE4FC1D029D9A6A9000AED9E /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			package = BE8EE8FE2A159BAA00EC7DA6 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
