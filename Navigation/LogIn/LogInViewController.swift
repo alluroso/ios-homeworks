@@ -113,6 +113,28 @@ class LogInViewController: UIViewController {
         return button
     }()
 
+    private lazy var brutePasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Подобрать пароль", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(1), for: .normal)
+        button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .selected)
+        button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .highlighted)
+        button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .disabled)
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
+        button.addTarget(nil, action: #selector(brutePasswordButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+
     init(){
         super.init(nibName: nil, bundle: nil)
         tabBarItem = tabBar
@@ -136,7 +158,7 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(contentView)
         scrollView.keyboardDismissMode = .interactive
 
-        contentView.addSubviews(logoImage, loginStackView, loginButton)
+        contentView.addSubviews(logoImage, loginStackView, loginButton, brutePasswordButton, activityIndicator)
 
         loginStackView.addArrangedSubview(loginTextField)
         loginStackView.addArrangedSubview(passwordTextField)
@@ -159,7 +181,9 @@ class LogInViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+//            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
 
             logoImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 120),
             logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -179,7 +203,15 @@ class LogInViewController: UIViewController {
             loginButton.leadingAnchor.constraint(equalTo: loginStackView.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: loginStackView.trailingAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
-            loginButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -16)
+            loginButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -16),
+
+            brutePasswordButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 16),
+            brutePasswordButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            brutePasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            brutePasswordButton.heightAnchor.constraint(equalToConstant: 50),
+
+            activityIndicator.centerXAnchor.constraint(equalTo: brutePasswordButton.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: brutePasswordButton.centerYAnchor)
         ])
     }
 }
@@ -240,6 +272,35 @@ extension LogInViewController {
             alert.addAction(action)
             alert.view.tintColor = .black
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    @objc private func brutePasswordButtonPressed() {
+
+        let passwordLengh = 4
+
+        self.brutePasswordButton.isEnabled = false
+        self.activityIndicator.startAnimating()
+
+        DispatchQueue.global().async {
+
+            GeneratePassword.shared.generatePass(count: passwordLengh)
+            print(GeneratePassword.shared.generatedPassword)
+
+            let passwordsArray = BruteForce.shared.generate(length: passwordLengh)
+            for password in passwordsArray {
+                if password == GeneratePassword.shared.generatedPassword {
+
+                    DispatchQueue.main.async {
+                        self.passwordTextField.text = password
+                        self.passwordTextField.isSecureTextEntry = false
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
+                        self.brutePasswordButton.isEnabled = true
+                    }
+                    break
+                }
+            }
         }
     }
 }
