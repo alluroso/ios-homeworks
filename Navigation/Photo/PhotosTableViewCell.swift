@@ -9,7 +9,7 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
 
-    private let photos = Photo.arrayPhotos()
+    private let sourceArray = Photo.arrayImages()
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -81,13 +81,13 @@ class PhotosTableViewCell: UITableViewCell {
 
 extension PhotosTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return sourceArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier, for: indexPath) as! PhotosCollectionViewCell
 //        cell.setupCell(photo: photos[indexPath.row])
-        cell.photoImageView.image = photos[indexPath.row]
+        cell.photoImageView.image = sourceArray[indexPath.row]
         return cell
     }
 }

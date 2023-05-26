@@ -29,9 +29,9 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-//    func setupCell(photo: Photo) {
-//        photoImageView.image = UIImage(named: photo.imageName)!
-//    }
+    func setupCell(photo: UIImage) {
+        photoImageView.image = photo
+    }
     
     private func constraints() {
         NSLayoutConstraint.activate([
