@@ -35,6 +35,7 @@
 		BEC4936C29D02A5B0021458D /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4936B29D02A5B0021458D /* TestUserService.swift */; };
 		BEC4936F29D02AAE0021458D /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4936E29D02AAE0021458D /* UserServiceProtocol.swift */; };
 		BEC4937129D02ACB0021458D /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4937029D02ACB0021458D /* CurrentUserService.swift */; };
+		BEC7834C2A3745DB00013A49 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC7834B2A3745DB00013A49 /* NetworkManager.swift */; };
 		BED565DD29D3C3B400FA38EB /* LoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565DC29D3C3B400FA38EB /* LoginChecker.swift */; };
 		BED565DF29D3C72D00FA38EB /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565DE29D3C72D00FA38EB /* LoginViewControllerDelegate.swift */; };
 		BED565E129D3C95D00FA38EB /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565E029D3C95D00FA38EB /* LoginInspector.swift */; };
@@ -99,6 +100,7 @@
 		BEC4936B29D02A5B0021458D /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
 		BEC4936E29D02AAE0021458D /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
 		BEC4937029D02ACB0021458D /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
+		BEC7834B2A3745DB00013A49 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BED565DC29D3C3B400FA38EB /* LoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChecker.swift; sourceTree = "<group>"; };
 		BED565DE29D3C72D00FA38EB /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BED565E029D3C95D00FA38EB /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				BE913150297AE45F005D00E9 /* LaunchScreen.storyboard */,
 				BE913153297AE45F005D00E9 /* Info.plist */,
 				BE59C0342988140500AF94B6 /* ExtensionUIView.swift */,
+				BEC7834B2A3745DB00013A49 /* NetworkManager.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				BE913160297AE86A005D00E9 /* InfoViewController.swift in Sources */,
 				BEC4936A29CFC6E60021458D /* User.swift in Sources */,
 				BE91315C297AE844005D00E9 /* ProfileViewController.swift in Sources */,
+				BEC7834C2A3745DB00013A49 /* NetworkManager.swift in Sources */,
 				BEC4937129D02ACB0021458D /* CurrentUserService.swift in Sources */,
 				BE91315A297AE830005D00E9 /* FeedViewController.swift in Sources */,
 				BE59C0332987920300AF94B6 /* LogInViewController.swift in Sources */,

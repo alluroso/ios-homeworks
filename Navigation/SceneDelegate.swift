@@ -11,11 +11,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    var appConfigaration: AppConfiguration = AppConfiguration.random()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
+
+        let url = AppConfiguration.random()
+        print(url.rawValue)
+        NetworkManager.request(for: appConfigaration)
 
         let tabBarController = UITabBarController()
 
