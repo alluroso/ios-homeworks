@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		84E4110B0B75F0D747EDDE20 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1310A03AE9DC16AC4F837A /* Pods_Navigation.framework */; };
 		BE0949A22981183C00F7D987 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0949A12981183C00F7D987 /* ProfileHeaderView.swift */; };
+		BE19565B2A3C1A9700D6F103 /* Planets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19565A2A3C1A9700D6F103 /* Planets.swift */; };
+		BE19565D2A3C34F300D6F103 /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19565C2A3C34F300D6F103 /* People.swift */; };
 		BE1A63B72990857100511424 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A63B62990857100511424 /* PhotosTableViewCell.swift */; };
 		BE1A63B92990A84500511424 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A63B82990A84500511424 /* Photo.swift */; };
 		BE1A63BB2990AC6C00511424 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A63BA2990AC6C00511424 /* PhotosViewController.swift */; };
@@ -74,6 +76,8 @@
 		8C2AEF0B43C7F5E2A8070462 /* Pods-StorageService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.debug.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.debug.xcconfig"; sourceTree = "<group>"; };
 		BC955C6D2DE64738A81A5B25 /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		BE0949A12981183C00F7D987 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		BE19565A2A3C1A9700D6F103 /* Planets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planets.swift; sourceTree = "<group>"; };
+		BE19565C2A3C34F300D6F103 /* People.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = People.swift; sourceTree = "<group>"; };
 		BE1A63B62990857100511424 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		BE1A63B82990A84500511424 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		BE1A63BA2990AC6C00511424 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				BE913153297AE45F005D00E9 /* Info.plist */,
 				BE59C0342988140500AF94B6 /* ExtensionUIView.swift */,
 				BEC7834B2A3745DB00013A49 /* NetworkManager.swift */,
+				BE19565A2A3C1A9700D6F103 /* Planets.swift */,
+				BE19565C2A3C34F300D6F103 /* People.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -441,12 +447,14 @@
 				BEC4937129D02ACB0021458D /* CurrentUserService.swift in Sources */,
 				BE91315A297AE830005D00E9 /* FeedViewController.swift in Sources */,
 				BE59C0332987920300AF94B6 /* LogInViewController.swift in Sources */,
+				BE19565D2A3C34F300D6F103 /* People.swift in Sources */,
 				BEEE636B29DE466700C510B0 /* CustomButton.swift in Sources */,
 				BE1A63BD29911F0E00511424 /* PhotosCollectionViewCell.swift in Sources */,
 				BEC4936F29D02AAE0021458D /* UserServiceProtocol.swift in Sources */,
 				BE1A63BB2990AC6C00511424 /* PhotosViewController.swift in Sources */,
 				BE913148297AE45F005D00E9 /* SceneDelegate.swift in Sources */,
 				BE892D4E2988FD35007BB937 /* PostTableViewCell.swift in Sources */,
+				BE19565B2A3C1A9700D6F103 /* Planets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
