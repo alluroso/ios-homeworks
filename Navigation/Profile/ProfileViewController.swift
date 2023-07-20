@@ -13,10 +13,8 @@ class ProfileViewController: UIViewController {
     let profileHeaderView = ProfileHeaderView()
 
     let posts = Post.arrayPosts()
-
-    var userService: UserService
-
-    var login: String?
+    
+    var currentUser: User
 
     static let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -25,17 +23,16 @@ class ProfileViewController: UIViewController {
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         return tableView
     }()
-
-    init(userService: UserService, login: String) {
-        self.userService = userService
-        self.login = login
+    
+    init(currentUser: User) {
+        self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,10 +87,10 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = ProfileHeaderView()
         if section == 0 {
-            let currentUser = userService.getUser(login: login!)
-            header.nameLabel.text = currentUser?.fullName
-            header.profileImage.image = currentUser?.avatar
-            header.statusLabel.text = currentUser?.status
+            let currentUser = currentUser
+            header.nameLabel.text = currentUser.fullName
+            header.profileImage.image = currentUser.avatar
+            header.statusLabel.text = currentUser.status
             return header
         } else {
             return nil

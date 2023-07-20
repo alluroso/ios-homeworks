@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct LoginInspector: LoginViewControllerDelegate {
+class LoginInspector: LoginViewControllerDelegate {
+
     func check(login: String, password: String) -> Bool {
-        let checker = Checker.shared
-        return checker.check(login: login, password: password)
+        Navigation.CheckerService.shared.checkCredentials(login: login, password: password)
+        if Navigation.CheckerService.shared.isSingUp == true {
+            return true
+        } else {
+            return false
+        }
     }
 }
