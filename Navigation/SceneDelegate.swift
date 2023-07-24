@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         logInVC.delegate = MyLoginFactory().makeLoginInspector()
         let profileNC = UINavigationController(rootViewController: logInVC)
 
-        tabBarController.viewControllers = [feedNC, profileNC]
+        tabBarController.viewControllers = [profileNC,feedNC]
 
         if #available(iOS 15.0, *) {
             let appearanceNavigationBar = UINavigationBarAppearance()

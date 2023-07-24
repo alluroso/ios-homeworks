@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import RealmSwift
 
 protocol CheckerServiceProtocol {
     func checkCredentials(login: String, password: String)
@@ -21,26 +22,44 @@ class CheckerService: CheckerServiceProtocol {
     
     func checkCredentials(login: String, password: String) {
         
-        Auth.auth().createUser(withEmail: login, password: password) { result, error in
-            
-            if let error = error {
-                LogInViewController.signUpError = error.localizedDescription
-                NotificationCenter.default.post(name: Notification.Name("signUpError"), object: nil)
-            } else {
+        let newUser = RealmUser()
+        newUser.login = login
+        newUser.password = password
+        newUser.isLogin = false
+        
+        let realm = try! Realm()
+        
+        let currentUser = realm.objects(RealmUser.self).filter("login == '\(login)'").first
+        
+        if currentUser == nil {
+            try! realm.write {
+                realm.add(newUser)
                 NotificationCenter.default.post(name: Notification.Name("signUpSuccess"), object: nil)
             }
+        } else {
+            NotificationCenter.default.post(name: Notification.Name("userExists"), object: nil)
         }
     }
     
     func signUp(login: String, password: String) {
         
-        Auth.auth().signIn(withEmail: login, password: password) { result, error in
-            
-            if let error = error {
-                LogInViewController.logInError = error.localizedDescription
-                NotificationCenter.default.post(name: Notification.Name("logInError"), object: nil)
-            } else {
+        let realm = try! Realm()
+        
+        let currentUser = realm.objects(RealmUser.self).filter("login == '\(login)'").first
+        
+        if currentUser == nil {
+            NotificationCenter.default.post(name: Notification.Name("userNotExists"), object: nil)
+        } else {
+            if currentUser?.password == password {
+                try! realm.write {
+                    currentUser?.isLogin = true
+                }
+                
+                UserDefaults.standard.set(true, forKey: "isLogin")
+                
                 NotificationCenter.default.post(name: Notification.Name("logInSuccess"), object: nil)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name("passwordIsWrong"), object: nil)
             }
         }
     }

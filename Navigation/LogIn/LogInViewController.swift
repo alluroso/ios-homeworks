@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import RealmSwift
 
 class LogInViewController: UIViewController {
 
@@ -18,6 +19,8 @@ class LogInViewController: UIViewController {
 
     static var logInError: String?
     static var signUpError: String?
+    
+    var isLogin: Bool = false
 
     private let notificationCenter = NotificationCenter.default
 
@@ -232,6 +235,16 @@ class LogInViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.signUpError), name: Notification.Name("signUpError"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.signUpSuccess), name: Notification.Name("signUpSuccess"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userExists), name: Notification.Name("userExists"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userNotExists), name: Notification.Name("userNotExists"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.passwordIsWrong), name: Notification.Name("passwordIsWrong"), object: nil)
+        
+        isLogin = UserDefaults.standard.bool(forKey: "isLogin")
+        if isLogin {
+            NotificationCenter.default.post(name: Notification.Name("logInSuccess"), object: nil)
+        }
     }
 
     @objc func logInError() {
@@ -264,6 +277,29 @@ class LogInViewController: UIViewController {
 
     @objc func signUpSuccess() {
         let alertVC = UIAlertController(title: "Отлично!", message: "Аккаунт зарегистрирован", preferredStyle: .alert)
+        let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
+        alertVC.addAction(action)
+        self.present(alertVC, animated: true, completion: nil)
+        self.loginTextField.text?.removeAll()
+        self.passwordTextField.text?.removeAll()
+    }
+    
+    @objc func userExists() {
+        let alertVC = UIAlertController(title: "Ошибка", message: "Такой аккаунт уже существует!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
+        alertVC.addAction(action)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    @objc func userNotExists() {
+        let alertVC = UIAlertController(title: "Ошибка", message: "Такого аккаунта не существует!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
+        alertVC.addAction(action)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    @objc func passwordIsWrong() {
+        let alertVC = UIAlertController(title: "Ошибка", message: "Пароль неверный!", preferredStyle: .alert)
         let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
         alertVC.addAction(action)
         self.present(alertVC, animated: true, completion: nil)
