@@ -18,6 +18,9 @@
 		BE502EBE2A6F08ED00F26589 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = BE502EBD2A6F08ED00F26589 /* Realm */; };
 		BE502EC02A6F08ED00F26589 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BE502EBF2A6F08ED00F26589 /* RealmSwift */; };
 		BE502EC22A6F0C3600F26589 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE502EC12A6F0C3600F26589 /* RealmModel.swift */; };
+		BE502ED22A71244500F26589 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE502ED02A71244500F26589 /* Model.xcdatamodeld */; };
+		BE502ED52A71254200F26589 /* FavoritesPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE502ED42A71254200F26589 /* FavoritesPostViewController.swift */; };
+		BE502ED72A71272100F26589 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE502ED62A71272100F26589 /* CoreDataManager.swift */; };
 		BE59C0332987920300AF94B6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59C0322987920300AF94B6 /* LogInViewController.swift */; };
 		BE59C0352988140500AF94B6 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59C0342988140500AF94B6 /* ExtensionUIView.swift */; };
 		BE892D4E2988FD35007BB937 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE892D4D2988FD35007BB937 /* PostTableViewCell.swift */; };
@@ -89,6 +92,9 @@
 		BE1A63BA2990AC6C00511424 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		BE1A63BC29911F0E00511424 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE502EC12A6F0C3600F26589 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		BE502ED12A71244500F26589 /* postModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = postModel.xcdatamodel; sourceTree = "<group>"; };
+		BE502ED42A71254200F26589 /* FavoritesPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPostViewController.swift; sourceTree = "<group>"; };
+		BE502ED62A71272100F26589 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BE59C0322987920300AF94B6 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BE59C0342988140500AF94B6 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		BE892D4D2988FD35007BB937 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -169,6 +175,16 @@
 			path = Photo;
 			sourceTree = "<group>";
 		};
+		BE502ED32A7124AF00F26589 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				BE502ED42A71254200F26589 /* FavoritesPostViewController.swift */,
+				BE502ED62A71272100F26589 /* CoreDataManager.swift */,
+				BE502ED02A71244500F26589 /* Model.xcdatamodeld */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
 		BE8EE8E12A147F1A00EC7DA6 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +222,7 @@
 				BE913147297AE45F005D00E9 /* SceneDelegate.swift */,
 				BED565DB29D3C37A00FA38EB /* LogIn */,
 				BE0949A02981180F00F7D987 /* Profile */,
+				BE502ED32A7124AF00F26589 /* Favorite */,
 				BE1D504529D0D6FB00487728 /* Photo */,
 				BEC4936D29D02A670021458D /* User */,
 				BE913159297AE830005D00E9 /* FeedViewController.swift */,
@@ -469,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE502ED52A71254200F26589 /* FavoritesPostViewController.swift in Sources */,
 				BED565E129D3C95D00FA38EB /* LoginInspector.swift in Sources */,
 				BEC4936C29D02A5B0021458D /* TestUserService.swift in Sources */,
 				BED565DF29D3C72D00FA38EB /* LoginViewControllerDelegate.swift in Sources */,
@@ -478,9 +496,11 @@
 				BE59C0352988140500AF94B6 /* ExtensionUIView.swift in Sources */,
 				BEE4E1992A61228200C568DE /* CheckerService.swift in Sources */,
 				BEEE636D29DE47CD00C510B0 /* FeedModel.swift in Sources */,
+				BE502ED72A71272100F26589 /* CoreDataManager.swift in Sources */,
 				BE913146297AE45F005D00E9 /* AppDelegate.swift in Sources */,
 				BE0949A22981183C00F7D987 /* ProfileHeaderView.swift in Sources */,
 				BE1A63B92990A84500511424 /* Photo.swift in Sources */,
+				BE502ED22A71244500F26589 /* Model.xcdatamodeld in Sources */,
 				BE8EE9022A2048EC00EC7DA6 /* BruteForce.swift in Sources */,
 				BED565E329D3CAEE00FA38EB /* LoginFactory.swift in Sources */,
 				BE913160297AE86A005D00E9 /* InfoViewController.swift in Sources */,
@@ -830,6 +850,19 @@
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		BE502ED02A71244500F26589 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE502ED12A71244500F26589 /* postModel.xcdatamodel */,
+			);
+			currentVersion = BE502ED12A71244500F26589 /* postModel.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BE91313A297AE45F005D00E9 /* Project object */;
 }

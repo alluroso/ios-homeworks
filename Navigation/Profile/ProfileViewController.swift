@@ -75,6 +75,9 @@ extension ProfileViewController: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
         cell.setupCell(post: posts[indexPath.row])
+        cell.likePostAction = {
+            CoreDataManager.shared.save($0)
+        }
         return cell
     }
 

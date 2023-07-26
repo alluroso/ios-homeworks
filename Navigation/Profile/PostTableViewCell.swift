@@ -10,6 +10,9 @@ import StorageService
 import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
+    
+    private var post: Post?
+    var likePostAction: ((Post) -> Void)?
 
     private let contentCellView: UIView = {
         let view = UIView()
@@ -63,9 +66,11 @@ class PostTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
 
         setupViews()
         constraints()
+        addFavoritePost()
     }
 
     required init?(coder: NSCoder) {
@@ -77,6 +82,7 @@ class PostTableViewCell: UITableViewCell {
         postDescriptionLabel.text = post.description
         postLikesLabel.text = "Likes: \(post.likes)"
         postViewsLabel.text = "Views: \(post.views)"
+        self.post = post
         postImage.backgroundColor = .black
         if let image = UIImage(named: post.image) {
             let filter = ColorFilter.allCases[Int.random(in: 0..<ColorFilter.allCases.count)]
@@ -116,5 +122,17 @@ class PostTableViewCell: UITableViewCell {
             postViewsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             postViewsLabel.widthAnchor.constraint(equalTo: postLikesLabel.widthAnchor)
         ])
+    }
+    
+    private func addFavoritePost() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(likePost))
+        doubleTap.numberOfTapsRequired = 2
+        addGestureRecognizer(doubleTap)
+    }
+    
+    @objc private func likePost() {
+        guard let post = post else { return }
+        print("Пост сохранен в избранное")
+        likePostAction?(post)
     }
 }
