@@ -22,17 +22,50 @@ class CoreDataManager {
         })
         return container
     }()
-        
+    
     init() {}
     
     func save(_ post: Post) {
-        Model.create(with: post, using: persistentContainer.viewContext)
+        persistentContainer.performBackgroundTask { backgroundContext in
+            if self.getPost(image: post.image, context: backgroundContext) != nil
+            { return }
+            Model.create(with: post, using: backgroundContext)
+        }
     }
     
-    func showFavorites() -> [Post] {
-        let request = NSFetchRequest<Model>(entityName: "Model")
+    func showFavorites(author: String? = nil) -> [Post] {
+        let request = Model.fetchRequest()
+        if let author = author, author != "" {
+            request.predicate = NSPredicate(format: "author contains[c] %@", author)
+        }
         guard let fetchRequestResult = try? persistentContainer.viewContext.fetch(request) else { return [] }
         return fetchRequestResult.map { $0.toPost() }
+    }
+    
+    func getPost(image: String, context: NSManagedObjectContext) -> Model? {
+        let request = Model.fetchRequest()
+        request.predicate = NSPredicate(format: "image == %@", image)
+        return (try? context.fetch(request))?.first
+    }
+    
+    func deletePost(_ post: Post) {
+        let context = persistentContainer.viewContext
+        if let post = getPost(image: post.image, context: context) {
+            context.delete(post)
+            saveContext()
+        }
+    }
+    
+    func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }
 
@@ -64,5 +97,29 @@ extension Model {
             likes: Int(likes),
             views: Int(views)
         )
+    }
+    
+    static func delete(with post: Post, using context: NSManagedObjectContext) {
+        let model = Model(context: context)
+        model.title = post.title
+        model.author = post.author
+        model.descript = post.description
+        model.image = post.image
+        model.likes = Int64(post.likes)
+        model.views = Int64(post.views)
+        
+        context.delete(model)
+        saveContext(context)
+    }
+    
+    static func saveContext(_ context: NSManagedObjectContext) {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }
