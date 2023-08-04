@@ -20,6 +20,7 @@ class CoreDataManager {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        container.viewContext.automaticallyMergesChangesFromParent = true
         return container
     }()
     
@@ -54,6 +55,12 @@ class CoreDataManager {
             context.delete(post)
             saveContext()
         }
+    }
+    
+    func deletePost(_ post: Model) {
+        let context = persistentContainer.viewContext
+        context.delete(post)
+        saveContext()
     }
     
     func saveContext() {
