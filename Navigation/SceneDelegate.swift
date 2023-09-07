@@ -36,8 +36,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let favoritesVC = FavoritesPostViewController()
         let favoritesNC = UINavigationController(rootViewController: favoritesVC)
+        
+        let mapVC = MapViewController()
+        let mapNC = UINavigationController(rootViewController: mapVC)
 
-        tabBarController.viewControllers = [feedNC, profileNC, favoritesNC]
+        tabBarController.viewControllers = [feedNC, profileNC, favoritesNC, mapNC]
 
         if #available(iOS 15.0, *) {
             let appearanceNavigationBar = UINavigationBarAppearance()
