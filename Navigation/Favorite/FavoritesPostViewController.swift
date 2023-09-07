@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 import StorageService
+import CoreData
 
-class FavoritesPostViewController: UIViewController, UITableViewDelegate {
+class FavoritesPostViewController: UIViewController, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     let tabBar = UITabBarItem(title: "Избранное",
                               image: UIImage(systemName: "star"),
@@ -22,6 +23,16 @@ class FavoritesPostViewController: UIViewController, UITableViewDelegate {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         return tableView
+    }()
+    
+    let fetchedResultsController: NSFetchedResultsController<Model> = {
+        let fetchRequest = Model.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "views", ascending: false)]
+        let fetchedRC = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                   managedObjectContext: CoreDataManager.shared.persistentContainer.viewContext,
+                                                   sectionNameKeyPath: nil,
+                                                   cacheName: nil)
+        return fetchedRC
     }()
     
     init() {
@@ -44,7 +55,7 @@ class FavoritesPostViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        favorites = CoreDataManager.shared.showFavorites()
+//        favorites = CoreDataManager.shared.showFavorites()
         tableView.reloadData()
     }
     
@@ -53,6 +64,8 @@ class FavoritesPostViewController: UIViewController, UITableViewDelegate {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
+        fetchedResultsController.delegate = self
+        try? fetchedResultsController.performFetch()
     }
     
     func setupBarButton() {
@@ -69,6 +82,22 @@ class FavoritesPostViewController: UIViewController, UITableViewDelegate {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .automatic)
+        @unknown default:
+            tableView.reloadData()
+        }
+        tableView.reloadData()
     }
     
     @objc func changeFilter() {
@@ -96,12 +125,15 @@ class FavoritesPostViewController: UIViewController, UITableViewDelegate {
 
 extension FavoritesPostViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites.count
+//        return favorites.count
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-        cell.setupCell(post: favorites[indexPath.row])
+//        cell.setupCell(post: favorites[indexPath.row])
+        let post = fetchedResultsController.object(at: indexPath).toPost()
+                cell.setupCell(post: post)
         return cell
     }
     
@@ -110,9 +142,11 @@ extension FavoritesPostViewController: UITableViewDataSource {
 
             guard let self = self else { return }
 
-            CoreDataManager.shared.deletePost(self.favorites[indexPath.row])
-            self.favorites.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+//            CoreDataManager.shared.deletePost(self.favorites[indexPath.row])
+//            self.favorites.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+            let post = self.fetchedResultsController.object(at: indexPath)
+            CoreDataManager.shared.deletePost(post)
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
         return swipeActions
