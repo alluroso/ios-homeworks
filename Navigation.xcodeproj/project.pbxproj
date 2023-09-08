@@ -21,6 +21,7 @@
 		BE502ED22A71244500F26589 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE502ED02A71244500F26589 /* Model.xcdatamodeld */; };
 		BE502ED52A71254200F26589 /* FavoritesPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE502ED42A71254200F26589 /* FavoritesPostViewController.swift */; };
 		BE502ED72A71272100F26589 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE502ED62A71272100F26589 /* CoreDataManager.swift */; };
+		BE502ED92AAA416A00F26589 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE502ED82AAA416A00F26589 /* MapViewController.swift */; };
 		BE59C0332987920300AF94B6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59C0322987920300AF94B6 /* LogInViewController.swift */; };
 		BE59C0352988140500AF94B6 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59C0342988140500AF94B6 /* ExtensionUIView.swift */; };
 		BE892D4E2988FD35007BB937 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE892D4D2988FD35007BB937 /* PostTableViewCell.swift */; };
@@ -95,6 +96,7 @@
 		BE502ED12A71244500F26589 /* postModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = postModel.xcdatamodel; sourceTree = "<group>"; };
 		BE502ED42A71254200F26589 /* FavoritesPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPostViewController.swift; sourceTree = "<group>"; };
 		BE502ED62A71272100F26589 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		BE502ED82AAA416A00F26589 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BE59C0322987920300AF94B6 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BE59C0342988140500AF94B6 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		BE892D4D2988FD35007BB937 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				BE502ED32A7124AF00F26589 /* Favorite */,
 				BE1D504529D0D6FB00487728 /* Photo */,
 				BEC4936D29D02A670021458D /* User */,
+				BE502ED82AAA416A00F26589 /* MapViewController.swift */,
 				BE913159297AE830005D00E9 /* FeedViewController.swift */,
 				BE91315D297AE856005D00E9 /* PostViewController.swift */,
 				BE91315F297AE86A005D00E9 /* InfoViewController.swift */,
@@ -519,6 +522,7 @@
 				BE892D4E2988FD35007BB937 /* PostTableViewCell.swift in Sources */,
 				BE502EC22A6F0C3600F26589 /* RealmModel.swift in Sources */,
 				BE19565B2A3C1A9700D6F103 /* Planets.swift in Sources */,
+				BE502ED92AAA416A00F26589 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
