@@ -45,6 +45,9 @@
 		BEC4936F29D02AAE0021458D /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4936E29D02AAE0021458D /* UserServiceProtocol.swift */; };
 		BEC4937129D02ACB0021458D /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4937029D02ACB0021458D /* CurrentUserService.swift */; };
 		BEC7834C2A3745DB00013A49 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC7834B2A3745DB00013A49 /* NetworkManager.swift */; };
+		BECF6DE72AACA3C0001C6FF4 /* ExtensionStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF6DE62AACA3C0001C6FF4 /* ExtensionStrings.swift */; };
+		BECF6DE82AACA5B8001C6FF4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BECF6DEA2AACA5B8001C6FF4 /* Localizable.strings */; };
+		BECF6DF02AACBD3A001C6FF4 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BECF6DF22AACBD3A001C6FF4 /* Localizable.stringsdict */; };
 		BED565DD29D3C3B400FA38EB /* LoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565DC29D3C3B400FA38EB /* LoginChecker.swift */; };
 		BED565DF29D3C72D00FA38EB /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565DE29D3C72D00FA38EB /* LoginViewControllerDelegate.swift */; };
 		BED565E129D3C95D00FA38EB /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565E029D3C95D00FA38EB /* LoginInspector.swift */; };
@@ -120,6 +123,10 @@
 		BEC4936E29D02AAE0021458D /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
 		BEC4937029D02ACB0021458D /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 		BEC7834B2A3745DB00013A49 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BECF6DE62AACA3C0001C6FF4 /* ExtensionStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionStrings.swift; sourceTree = "<group>"; };
+		BECF6DEC2AACA9B6001C6FF4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BECF6DF12AACBD3A001C6FF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		BECF6DF32AACBD3B001C6FF4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		BED565DC29D3C3B400FA38EB /* LoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChecker.swift; sourceTree = "<group>"; };
 		BED565DE29D3C72D00FA38EB /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BED565E029D3C95D00FA38EB /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -238,6 +245,9 @@
 				BE913150297AE45F005D00E9 /* LaunchScreen.storyboard */,
 				BE913153297AE45F005D00E9 /* Info.plist */,
 				BEE4E1A72A695F2A00C568DE /* GoogleService-Info.plist */,
+				BECF6DEA2AACA5B8001C6FF4 /* Localizable.strings */,
+				BECF6DF22AACBD3A001C6FF4 /* Localizable.stringsdict */,
+				BECF6DE62AACA3C0001C6FF4 /* ExtensionStrings.swift */,
 				BE59C0342988140500AF94B6 /* ExtensionUIView.swift */,
 				BEC7834B2A3745DB00013A49 /* NetworkManager.swift */,
 				BE19565A2A3C1A9700D6F103 /* Planets.swift */,
@@ -375,6 +385,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = BE913139297AE45F005D00E9;
 			packageReferences = (
@@ -404,7 +415,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE913152297AE45F005D00E9 /* LaunchScreen.storyboard in Resources */,
+				BECF6DE82AACA5B8001C6FF4 /* Localizable.strings in Resources */,
 				BE91314F297AE45F005D00E9 /* Assets.xcassets in Resources */,
+				BECF6DF02AACBD3A001C6FF4 /* Localizable.stringsdict in Resources */,
 				BEE4E1A82A695F2A00C568DE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +522,7 @@
 				BE913160297AE86A005D00E9 /* InfoViewController.swift in Sources */,
 				BEC4936A29CFC6E60021458D /* User.swift in Sources */,
 				BE91315C297AE844005D00E9 /* ProfileViewController.swift in Sources */,
+				BECF6DE72AACA3C0001C6FF4 /* ExtensionStrings.swift in Sources */,
 				BEC7834C2A3745DB00013A49 /* NetworkManager.swift in Sources */,
 				BEC4937129D02ACB0021458D /* CurrentUserService.swift in Sources */,
 				BE91315A297AE830005D00E9 /* FeedViewController.swift in Sources */,
@@ -543,6 +557,23 @@
 				BE913151297AE45F005D00E9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BECF6DEA2AACA5B8001C6FF4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BECF6DEC2AACA9B6001C6FF4 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		BECF6DF22AACBD3A001C6FF4 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BECF6DF12AACBD3A001C6FF4 /* en */,
+				BECF6DF32AACBD3B001C6FF4 /* ru */,
+			);
+			name = Localizable.stringsdict;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -620,6 +651,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -680,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

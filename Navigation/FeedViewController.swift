@@ -10,11 +10,11 @@ import StorageService
 
 class FeedViewController: UIViewController {
 
-    let tabBar = UITabBarItem(title: "Главная",
+    let tabBar = UITabBarItem(title: "Feed".localized,
                               image: UIImage(systemName: "house"),
                               selectedImage: UIImage(systemName: "house.fill"))
     
-    var post = Post(title: "Пост 1")
+    var post = Post(title: "Post 1".localized)
 
     private let buttonVSView: UIStackView = {
         let stackView = UIStackView()
@@ -35,7 +35,7 @@ class FeedViewController: UIViewController {
     }()
 
     private lazy var postButtonFirst: CustomButton = {
-        let button = CustomButton(title: "Пост 1", titleColor: .black, backgroundColor: .systemMint, onTap: click)
+        let button = CustomButton(title: "Post 1".localized, titleColor: .black, backgroundColor: .systemMint, onTap: click)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 0.5
 //        button.addTarget(self, action: #selector(click), for: .touchUpInside)
@@ -44,7 +44,7 @@ class FeedViewController: UIViewController {
     }()
 
     private lazy var postButtonSecond: CustomButton = {
-        let button = CustomButton(title: "Пост 2", titleColor: .black, backgroundColor: .systemPurple, onTap: click)
+        let button = CustomButton(title: "Post 2".localized, titleColor: .black, backgroundColor: .systemPurple, onTap: click)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 0.5
 //        button.addTarget(self, action: #selector(click), for: .touchUpInside)
@@ -53,7 +53,7 @@ class FeedViewController: UIViewController {
     }()
 
     private lazy var checkGuessButton: CustomButton = {
-        let button = CustomButton(title: "Check word", titleColor: .black, backgroundColor: .orange, onTap: buttonCheckWord)
+        let button = CustomButton(title: "Check word".localized, titleColor: .black, backgroundColor: .orange, onTap: buttonCheckWord)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 0.5
 //        button.addTarget(self, action: #selector(buttonCheckWord), for: .touchUpInside)
@@ -63,7 +63,7 @@ class FeedViewController: UIViewController {
 
     private lazy var wordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Enter a word"
+        textField.placeholder = "Enter a word".localized
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textColor = .black
         textField.backgroundColor = .systemGray6
@@ -91,7 +91,7 @@ class FeedViewController: UIViewController {
 
     private lazy var passwordHint: UILabel = {
         let label = UILabel()
-        label.text = "Correctly: smile"
+        label.text = "Correctly: smile".localized
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 14)
         label.backgroundColor = .systemIndigo
@@ -152,8 +152,8 @@ class FeedViewController: UIViewController {
             checkGuessLabel.backgroundColor = feedModel.check(word) ? .green : .red
 
             let alert = UIAlertController(
-                title: feedModel.check(word) ? "Right" : "Wrong",
-                message: feedModel.check(word) ? "Cool" : "Try again.",
+                title: feedModel.check(word) ? "Right".localized : "Wrong".localized,
+                message: feedModel.check(word) ? "Cool".localized : "Try again".localized,
                 preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
             alert.view.tintColor = .black
@@ -163,8 +163,8 @@ class FeedViewController: UIViewController {
             checkGuessLabel.backgroundColor  = .gray
 
             let alert = UIAlertController(
-                title: "Enter a word",
-                message: "Enter a word and try again.",
+                title: "Enter a word".localized,
+                message: "Enter a word and try again".localized,
                 preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
             alert.view.tintColor = .black

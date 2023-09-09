@@ -27,7 +27,7 @@ class PhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Photo Gallery"
+        title = "Photo Gallery".localized
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
         benchmarkQOS()

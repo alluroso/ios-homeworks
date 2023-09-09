@@ -11,7 +11,7 @@ import RealmSwift
 
 class LogInViewController: UIViewController {
 
-    let tabBar = UITabBarItem(title: "Профиль",
+    let tabBar = UITabBarItem(title: "Profile".localized,
                               image: UIImage(systemName: "person"),
                               selectedImage: UIImage(systemName: "person.fill"))
 
@@ -78,7 +78,7 @@ class LogInViewController: UIViewController {
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textColor = .black
         textField.backgroundColor = .systemGray6
-        textField.placeholder = "Password"
+        textField.placeholder = "Password".localized
         textField.isSecureTextEntry = true
         textField.tintColor = UIColor(named: "#4885CC")
         textField.autocapitalizationType = .none
@@ -95,7 +95,7 @@ class LogInViewController: UIViewController {
 
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Log In".localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(1), for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .selected)
@@ -110,7 +110,7 @@ class LogInViewController: UIViewController {
 
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("Sign Up".localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .orange
         button.layer.cornerRadius = 10
@@ -122,7 +122,7 @@ class LogInViewController: UIViewController {
 
     private lazy var brutePasswordButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Подобрать пароль", for: .normal)
+        button.setTitle("Find a password".localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(1), for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .selected)
@@ -249,7 +249,7 @@ class LogInViewController: UIViewController {
 
     @objc func logInError() {
         if let logInError = LogInViewController.logInError {
-            let alertVC = UIAlertController(title: "Ошибка", message: "\(String(describing: logInError))", preferredStyle: .alert)
+            let alertVC = UIAlertController(title: "Error".localized, message: "\(String(describing: logInError))", preferredStyle: .alert)
             let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
             alertVC.addAction(action)
             self.present(alertVC, animated: true, completion: nil)
@@ -268,7 +268,7 @@ class LogInViewController: UIViewController {
 
     @objc func signUpError() {
         if let signUpError = LogInViewController.signUpError {
-            let alertVC = UIAlertController(title: "Ошибка", message: "\(String(describing: signUpError))", preferredStyle: .alert)
+            let alertVC = UIAlertController(title: "Error".localized, message: "\(String(describing: signUpError))", preferredStyle: .alert)
             let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
             alertVC.addAction(action)
             self.present(alertVC, animated: true, completion: nil)
@@ -276,7 +276,7 @@ class LogInViewController: UIViewController {
     }
 
     @objc func signUpSuccess() {
-        let alertVC = UIAlertController(title: "Отлично!", message: "Аккаунт зарегистрирован", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Fine!".localized, message: "Account registered".localized, preferredStyle: .alert)
         let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
         alertVC.addAction(action)
         self.present(alertVC, animated: true, completion: nil)
@@ -285,21 +285,21 @@ class LogInViewController: UIViewController {
     }
     
     @objc func userExists() {
-        let alertVC = UIAlertController(title: "Ошибка", message: "Такой аккаунт уже существует!", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Error".localized, message: "This account already exists!".localized, preferredStyle: .alert)
         let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
         alertVC.addAction(action)
         self.present(alertVC, animated: true, completion: nil)
     }
     
     @objc func userNotExists() {
-        let alertVC = UIAlertController(title: "Ошибка", message: "Такого аккаунта не существует!", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Error".localized, message: "This account does not exist!".localized, preferredStyle: .alert)
         let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
         alertVC.addAction(action)
         self.present(alertVC, animated: true, completion: nil)
     }
     
     @objc func passwordIsWrong() {
-        let alertVC = UIAlertController(title: "Ошибка", message: "Пароль неверный!", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Error".localized, message: "Wrong password!".localized, preferredStyle: .alert)
         let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
         alertVC.addAction(action)
         self.present(alertVC, animated: true, completion: nil)
@@ -329,14 +329,14 @@ extension LogInViewController {
     @objc private func loginButtonPressed() {
 
         guard loginTextField.text?.isEmpty == false else {
-            let alertVC = UIAlertController(title: "Ошибка", message: "Введите логин!", preferredStyle: .alert)
+            let alertVC = UIAlertController(title: "Error".localized, message: "Enter login!".localized, preferredStyle: .alert)
             let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
             alertVC.addAction(action)
             self.present(alertVC, animated: true, completion: nil)
             return }
 
         guard passwordTextField.text?.isEmpty == false else {
-            let alertVC = UIAlertController(title: "Ошибка", message: "Введите пароль!", preferredStyle: .alert)
+            let alertVC = UIAlertController(title: "Error".localized, message: "Enter password!".localized, preferredStyle: .alert)
             let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
             alertVC.addAction(action)
             self.present(alertVC, animated: true, completion: nil)
@@ -352,14 +352,14 @@ extension LogInViewController {
     @objc private func signUpButtonPressed() {
 
         guard loginTextField.text?.isEmpty == false else {
-            let alertVC = UIAlertController(title: "Ошибка", message: "Введите логин!", preferredStyle: .alert)
+            let alertVC = UIAlertController(title: "Error".localized, message: "Enter login!".localized, preferredStyle: .alert)
             let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
             alertVC.addAction(action)
             self.present(alertVC, animated: true, completion: nil)
             return }
 
         guard passwordTextField.text?.isEmpty == false else {
-            let alertVC = UIAlertController(title: "Ошибка", message: "Введите пароль!", preferredStyle: .alert)
+            let alertVC = UIAlertController(title: "Error".localized, message: "Enter password!".localized, preferredStyle: .alert)
             let action = UIAlertAction(title: "ОК", style: .default, handler: nil)
             alertVC.addAction(action)
             self.present(alertVC, animated: true, completion: nil)
