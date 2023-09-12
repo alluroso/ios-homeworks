@@ -40,7 +40,7 @@ final class ProfileHeaderView: UIView {
 
     private lazy var closeProfileImageButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25))?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
+        button.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25))?.withTintColor(Palette.blackWhite, renderingMode: .alwaysOriginal), for: .normal)
         button.backgroundColor = .clear
         button.layer.opacity = 0
         button.addTarget(self, action: #selector(closeProfileImage), for: .touchUpInside)
@@ -51,7 +51,7 @@ final class ProfileHeaderView: UIView {
     private(set) lazy var nameLabel: UILabel = {
         let label = UILabel()
         //        label.text = "Cillian Murphy"
-        label.textColor = .black
+        label.textColor = Palette.blackWhite
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -60,7 +60,7 @@ final class ProfileHeaderView: UIView {
     private(set) lazy var statusLabel: UILabel = {
         let label = UILabel()
         //        label.text = "Actor, musician"
-        label.textColor = .gray
+        label.textColor = Palette.grayWhite
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -70,8 +70,8 @@ final class ProfileHeaderView: UIView {
         let textField = UITextField()
         textField.placeholder = "Enter new status".localized
         textField.clearButtonMode = .whileEditing
-        textField.textColor = .black
-        textField.backgroundColor = .white
+        textField.textColor = Palette.blackWhite
+        textField.backgroundColor = Palette.whiteGray2
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1

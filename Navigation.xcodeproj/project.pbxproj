@@ -48,6 +48,8 @@
 		BECF6DE72AACA3C0001C6FF4 /* ExtensionStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF6DE62AACA3C0001C6FF4 /* ExtensionStrings.swift */; };
 		BECF6DE82AACA5B8001C6FF4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BECF6DEA2AACA5B8001C6FF4 /* Localizable.strings */; };
 		BECF6DF02AACBD3A001C6FF4 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BECF6DF22AACBD3A001C6FF4 /* Localizable.stringsdict */; };
+		BECF6DF52AB08042001C6FF4 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF6DF42AB08042001C6FF4 /* ExtensionUIColor.swift */; };
+		BECF6DF72AB08642001C6FF4 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF6DF62AB08642001C6FF4 /* ColorPalette.swift */; };
 		BED565DD29D3C3B400FA38EB /* LoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565DC29D3C3B400FA38EB /* LoginChecker.swift */; };
 		BED565DF29D3C72D00FA38EB /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565DE29D3C72D00FA38EB /* LoginViewControllerDelegate.swift */; };
 		BED565E129D3C95D00FA38EB /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565E029D3C95D00FA38EB /* LoginInspector.swift */; };
@@ -127,6 +129,8 @@
 		BECF6DEC2AACA9B6001C6FF4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BECF6DF12AACBD3A001C6FF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		BECF6DF32AACBD3B001C6FF4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		BECF6DF42AB08042001C6FF4 /* ExtensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIColor.swift; sourceTree = "<group>"; };
+		BECF6DF62AB08642001C6FF4 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		BED565DC29D3C3B400FA38EB /* LoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChecker.swift; sourceTree = "<group>"; };
 		BED565DE29D3C72D00FA38EB /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BED565E029D3C95D00FA38EB /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 				BECF6DF22AACBD3A001C6FF4 /* Localizable.stringsdict */,
 				BECF6DE62AACA3C0001C6FF4 /* ExtensionStrings.swift */,
 				BE59C0342988140500AF94B6 /* ExtensionUIView.swift */,
+				BECF6DF42AB08042001C6FF4 /* ExtensionUIColor.swift */,
+				BECF6DF62AB08642001C6FF4 /* ColorPalette.swift */,
 				BEC7834B2A3745DB00013A49 /* NetworkManager.swift */,
 				BE19565A2A3C1A9700D6F103 /* Planets.swift */,
 				BE19565C2A3C34F300D6F103 /* People.swift */,
@@ -533,6 +539,8 @@
 				BEC4936F29D02AAE0021458D /* UserServiceProtocol.swift in Sources */,
 				BE1A63BB2990AC6C00511424 /* PhotosViewController.swift in Sources */,
 				BE913148297AE45F005D00E9 /* SceneDelegate.swift in Sources */,
+				BECF6DF52AB08042001C6FF4 /* ExtensionUIColor.swift in Sources */,
+				BECF6DF72AB08642001C6FF4 /* ColorPalette.swift in Sources */,
 				BE892D4E2988FD35007BB937 /* PostTableViewCell.swift in Sources */,
 				BE502EC22A6F0C3600F26589 /* RealmModel.swift in Sources */,
 				BE19565B2A3C1A9700D6F103 /* Planets.swift in Sources */,

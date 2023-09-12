@@ -57,8 +57,8 @@ class LogInViewController: UIViewController {
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.systemFont(ofSize: 16)
-        textField.textColor = .black
-        textField.backgroundColor = .systemGray6
+        textField.textColor = Palette.blackWhite
+        textField.backgroundColor = Palette.gray62
         textField.placeholder = "Email"
         textField.keyboardType = .emailAddress
         textField.tintColor = UIColor(named: "#4885CC")
@@ -76,8 +76,8 @@ class LogInViewController: UIViewController {
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.systemFont(ofSize: 16)
-        textField.textColor = .black
-        textField.backgroundColor = .systemGray6
+        textField.textColor = Palette.blackWhite
+        textField.backgroundColor = Palette.gray62
         textField.placeholder = "Password".localized
         textField.isSecureTextEntry = true
         textField.tintColor = UIColor(named: "#4885CC")
@@ -96,7 +96,7 @@ class LogInViewController: UIViewController {
     private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Log In".localized, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(Palette.whiteBlack, for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(1), for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .selected)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .highlighted)
@@ -111,7 +111,7 @@ class LogInViewController: UIViewController {
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Up".localized, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(Palette.whiteBlack, for: .normal)
         button.backgroundColor = .orange
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
@@ -123,7 +123,7 @@ class LogInViewController: UIViewController {
     private lazy var brutePasswordButton: UIButton = {
         let button = UIButton()
         button.setTitle("Find a password".localized, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(Palette.whiteBlack, for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(1), for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .selected)
         button.setBackgroundImage(UIImage(named: "blue_pixel")!.alpha(0.8), for: .highlighted)
@@ -154,7 +154,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = Palette.whiteBlack
         navigationController?.navigationBar.isHidden = true
 
         setupViews()

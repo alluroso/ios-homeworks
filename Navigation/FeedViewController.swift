@@ -65,8 +65,8 @@ class FeedViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Enter a word".localized
         textField.font = UIFont.systemFont(ofSize: 16)
-        textField.textColor = .black
-        textField.backgroundColor = .systemGray6
+        textField.textColor = Palette.blackWhite
+        textField.backgroundColor = Palette.gray62
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 0.5
         textField.returnKeyType = .done
@@ -92,9 +92,9 @@ class FeedViewController: UIViewController {
     private lazy var passwordHint: UILabel = {
         let label = UILabel()
         label.text = "Correctly: smile".localized
-        label.textColor = .black
+        label.textColor = Palette.blackWhite
         label.font = UIFont.systemFont(ofSize: 14)
-        label.backgroundColor = .systemIndigo
+        label.backgroundColor = Palette.feedBackground
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -113,7 +113,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemIndigo
+        view.backgroundColor = Palette.feedBackground
         view.addSubview(buttonVSView)
 
         buttonVSView.addArrangedSubview(postButtonFirst)

@@ -28,7 +28,7 @@ class PhotosTableViewCell: UITableViewCell {
     private let photosLabel: UILabel = {
         let label = UILabel()
         label.text = "Gallery".localized
-        label.textColor = .black
+        label.textColor = Palette.blackWhite
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -37,7 +37,7 @@ class PhotosTableViewCell: UITableViewCell {
     private let arrowGallery: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "arrow.forward")
-        image.tintColor = .black
+        image.tintColor = Palette.blackWhite
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
