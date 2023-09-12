@@ -80,8 +80,8 @@ class PostTableViewCell: UITableViewCell {
     func setupCell(post: Post) {
         postAuthorLabel.text = post.author
         postDescriptionLabel.text = post.description
-        postLikesLabel.text = "Likes: \(post.likes)"
-        postViewsLabel.text = "Views: \(post.views)"
+        postLikesLabel.text = String(format: "Likes".localized, post.likes)
+        postViewsLabel.text = "Views:".localized + " \(post.views)"
         self.post = post
         postImage.backgroundColor = .black
         if let image = UIImage(named: post.image) {

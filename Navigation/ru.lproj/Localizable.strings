@@ -1,0 +1,56 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Алексей Калинин on 09.09.2023.
+  
+*/
+
+// MARK: TabBar
+
+"Feed" = "Лента";
+"Profile" = "Профиль";
+"Favorites" = "Избранное";
+"Map" = "Карта";
+
+// MARK: FeedView
+
+"Post 1" = "Пост 1";
+"Post 2" = "Пост 2";
+"Check word" = "Проверить";
+"Enter a word" = "Введите текст";
+"Correctly: smile" = "Правильно: smile";
+"Enter a word and try again" = "Введите текст и попробуйте еще раз";
+"Right" = "Верно";
+"Wrong" = "Неверно";
+"Cool" = "Отлично";
+"Try again" = "Попробуйте еще раз";
+
+// MARK: LoginView
+
+"Password" = "Пароль";
+"Log In" = "Войти";
+"Sign Up" = "Зарегистрироваться";
+"Find a password" = "Подобрать пароль";
+"Error" = "Ошибка";
+"Fine!" = "Отлично!";
+"Account registered" = "Аккаунт зарегистрирован";
+"This account already exists!" = "Такой аккаунт уже существует!";
+"This account does not exist!" = "Такого аккаунта не существует!";
+"Wrong password!" = "Пароль неверный!";
+"Enter login!" = "Введите логин!";
+"Enter password!" = "Введите пароль!";
+
+// MARK: ProfileView
+
+"Enter new status" = "Введите статус";
+"Show status" = "Установить статус";
+
+// MARK: PhotosView
+
+"Gallery" = "Галерея";
+"Photo Gallery" = "Галерея фотографий";
+
+// MARK: PostView
+
+"Views:" = "Просмотры:";

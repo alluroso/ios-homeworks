@@ -12,7 +12,7 @@ import CoreData
 
 class FavoritesPostViewController: UIViewController, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
-    let tabBar = UITabBarItem(title: "Избранное",
+    let tabBar = UITabBarItem(title: "Favorites".localized,
                               image: UIImage(systemName: "star"),
                               selectedImage: UIImage(systemName: "star.fill"))
     
@@ -46,7 +46,7 @@ class FavoritesPostViewController: UIViewController, UITableViewDelegate, NSFetc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Избранное"
+        title = "Favorites".localized
         
         setupViews()
         setupBarButton()

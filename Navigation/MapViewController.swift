@@ -10,7 +10,7 @@ import MapKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    let tabBar = UITabBarItem(title: "Карта",
+    let tabBar = UITabBarItem(title: "Map".localized,
                               image: UIImage(systemName: "map"),
                               selectedImage: UIImage(systemName: "map.fill"))
     

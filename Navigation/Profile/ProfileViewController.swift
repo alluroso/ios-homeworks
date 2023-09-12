@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemGray6
-        title = "Профиль"
+        title = "Profile".localized
 
         setupViews()
         constraints()

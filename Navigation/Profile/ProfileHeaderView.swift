@@ -68,7 +68,7 @@ final class ProfileHeaderView: UIView {
 
     private lazy var statusTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Enter new status"
+        textField.placeholder = "Enter new status".localized
         textField.clearButtonMode = .whileEditing
         textField.textColor = .black
         textField.backgroundColor = .white
@@ -89,7 +89,7 @@ final class ProfileHeaderView: UIView {
 
     private lazy var statusButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Show status", for: .normal)
+        button.setTitle("Show status".localized, for: .normal)
         button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 14
