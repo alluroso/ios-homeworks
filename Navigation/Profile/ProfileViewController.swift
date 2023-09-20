@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = Palette.profileBackground
         title = "Profile".localized
 
         setupViews()

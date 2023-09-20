@@ -60,7 +60,7 @@ class FavoritesPostViewController: UIViewController, UITableViewDelegate, NSFetc
     }
     
     func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = Palette.whiteBlack
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
