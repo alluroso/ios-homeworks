@@ -5,3 +5,10 @@
   Created by Алексей Калинин on 09.09.2023.
   
 */
+
+// MARK: LocalNotificationsService
+"LocalNotificationsService.actionCheck.title" = "Check";
+"LocalNotificationsService.actionCancel.title" = "Cancel";
+"LocalNotificationsService.content.title" = "Something new";
+"LocalNotificationsService.content.body" = "Look for the latest updates";
+"LocalNotificationsService.delegate.didReceive" = "Unknown button pressed";
