@@ -54,3 +54,10 @@
 // MARK: PostView
 
 "Views:" = "Просмотры:";
+
+// MARK: LocalNotificationsService
+"LocalNotificationsService.actionCheck.title" = "Посмотреть";
+"LocalNotificationsService.actionCancel.title" = "Закрыть";
+"LocalNotificationsService.content.title" = "Что-то новое";
+"LocalNotificationsService.content.body" = "Посмотрите последние обновления";
+"LocalNotificationsService.delegate.didReceive" = "Нажата неизвестная кнопка";
