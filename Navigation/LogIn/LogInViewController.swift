@@ -20,6 +20,8 @@ class LogInViewController: UIViewController {
     static var logInError: String?
     static var signUpError: String?
     
+    let authService = LocalAuthorizationService()
+    
     var isLogin: Bool = false
 
     private let notificationCenter = NotificationCenter.default
@@ -134,6 +136,12 @@ class LogInViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private lazy var faceIDButton: CustomButton = {
+        var button = CustomButton(title: "", titleColor: .clear, backgroundColor: .clear, onTap: biometricsButtonTapped)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
@@ -165,7 +173,7 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(contentView)
         scrollView.keyboardDismissMode = .interactive
 
-        contentView.addSubviews(logoImage, loginStackView, loginButton, signUpButton, brutePasswordButton, activityIndicator)
+        contentView.addSubviews(logoImage, loginStackView, loginButton, signUpButton, brutePasswordButton, faceIDButton, activityIndicator)
 
         loginStackView.addArrangedSubview(loginTextField)
         loginStackView.addArrangedSubview(passwordTextField)
@@ -176,6 +184,7 @@ class LogInViewController: UIViewController {
         constraints()
         notifications()
         hideKeyboard()
+        biometricsButton()
     }
 
     private func constraints() {
@@ -222,6 +231,11 @@ class LogInViewController: UIViewController {
             brutePasswordButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             brutePasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             brutePasswordButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            faceIDButton.topAnchor.constraint(equalTo: brutePasswordButton.bottomAnchor, constant: 16),
+            faceIDButton.centerXAnchor.constraint(equalTo: brutePasswordButton.centerXAnchor),
+            faceIDButton.widthAnchor.constraint(equalToConstant: 40),
+            faceIDButton.heightAnchor.constraint(equalToConstant: 40),
 
             activityIndicator.centerXAnchor.constraint(equalTo: brutePasswordButton.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: brutePasswordButton.centerYAnchor)
@@ -246,7 +260,35 @@ class LogInViewController: UIViewController {
             NotificationCenter.default.post(name: Notification.Name("logInSuccess"), object: nil)
         }
     }
-
+    
+    func biometricsButton() {
+        switch authService.biometryType {
+        case .faceID:
+            faceIDButton.setBackgroundImage(UIImage(systemName: "faceid"), for: .normal)
+        case .touchID:
+            faceIDButton.setBackgroundImage(UIImage(systemName: "touchid"), for: .normal)
+        default:
+            faceIDButton.isHidden = true
+        }
+    }
+    
+    @objc func biometricsButtonTapped(sender: UIButton!) {
+        
+        self.authService.authorizeIfPossible { result, error in
+            if let error = error {
+                let nonBiometricAlert = UIAlertController(title: error.localizedDescription,
+                                                          message: NSLocalizedString("NonBiometricAlertMessage", comment: ""),
+                                                          preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .cancel)
+                nonBiometricAlert.addAction(alertAction)
+                self.present(nonBiometricAlert, animated: true)
+            }
+            if result {
+                self.logInSuccess()
+            }
+        }
+    }
+    
     @objc func logInError() {
         if let logInError = LogInViewController.logInError {
             let alertVC = UIAlertController(title: "Error".localized, message: "\(String(describing: logInError))", preferredStyle: .alert)

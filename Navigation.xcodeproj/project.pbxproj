@@ -51,6 +51,7 @@
 		BECF6DF52AB08042001C6FF4 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF6DF42AB08042001C6FF4 /* ExtensionUIColor.swift */; };
 		BECF6DF72AB08642001C6FF4 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF6DF62AB08642001C6FF4 /* ColorPalette.swift */; };
 		BECF6DF92ABB2465001C6FF4 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF6DF82ABB2465001C6FF4 /* LocalNotificationsService.swift */; };
+		BECF6DFC2ABC713B001C6FF4 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF6DFB2ABC713B001C6FF4 /* LocalAuthorizationService.swift */; };
 		BED565DD29D3C3B400FA38EB /* LoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565DC29D3C3B400FA38EB /* LoginChecker.swift */; };
 		BED565DF29D3C72D00FA38EB /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565DE29D3C72D00FA38EB /* LoginViewControllerDelegate.swift */; };
 		BED565E129D3C95D00FA38EB /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED565E029D3C95D00FA38EB /* LoginInspector.swift */; };
@@ -134,6 +135,7 @@
 		BECF6DF62AB08642001C6FF4 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		BECF6DF82ABB2465001C6FF4 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		BECF6DFA2ABB2672001C6FF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BECF6DFB2ABC713B001C6FF4 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		BED565DC29D3C3B400FA38EB /* LoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChecker.swift; sourceTree = "<group>"; };
 		BED565DE29D3C72D00FA38EB /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BED565E029D3C95D00FA38EB /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				BE19565A2A3C1A9700D6F103 /* Planets.swift */,
 				BE19565C2A3C34F300D6F103 /* People.swift */,
 				BECF6DF82ABB2465001C6FF4 /* LocalNotificationsService.swift */,
+				BECF6DFB2ABC713B001C6FF4 /* LocalAuthorizationService.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				BED565DF29D3C72D00FA38EB /* LoginViewControllerDelegate.swift in Sources */,
 				BED565DD29D3C3B400FA38EB /* LoginChecker.swift in Sources */,
 				BE1A63B72990857100511424 /* PhotosTableViewCell.swift in Sources */,
+				BECF6DFC2ABC713B001C6FF4 /* LocalAuthorizationService.swift in Sources */,
 				BECF6DF92ABB2465001C6FF4 /* LocalNotificationsService.swift in Sources */,
 				BE91315E297AE856005D00E9 /* PostViewController.swift in Sources */,
 				BE59C0352988140500AF94B6 /* ExtensionUIView.swift in Sources */,
@@ -788,6 +792,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -817,6 +822,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

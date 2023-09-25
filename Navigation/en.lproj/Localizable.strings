@@ -7,8 +7,15 @@
 */
 
 // MARK: LocalNotificationsService
+
 "LocalNotificationsService.actionCheck.title" = "Check";
 "LocalNotificationsService.actionCancel.title" = "Cancel";
 "LocalNotificationsService.content.title" = "Something new";
 "LocalNotificationsService.content.body" = "Look for the latest updates";
 "LocalNotificationsService.delegate.didReceive" = "Unknown button pressed";
+
+// MARK: LocalAuthorizationService
+
+"LocalAuthorizationServiceLocalizedReason" = "Get Authorized for Login";
+"LocalAuthorizationServiceLocalizedCancelTitle" = "Enter with Login and Password";
+"NonBiometricAlertMessage" = "Need to register biometric data";
